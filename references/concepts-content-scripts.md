@@ -1,6 +1,6 @@
 # Content Scripts
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 Content scripts run JavaScript and CSS in the context of a web page, where they can read and modify the DOM. They execute in an isolated world and talk to the rest of the extension through message passing.
@@ -45,25 +45,26 @@ By default content scripts run in an **isolated world**: their JavaScript variab
 ```js
 // content script (isolated world) listening for a page message
 window.addEventListener("message", (event) => {
-  if (event.source === window && event.data.type === "FROM_PAGE") console.log(event.data.text);
+  if (event.source === window && event.origin === location.origin &&
+      event.data && typeof event.data === "object" && event.data.type === "FROM_PAGE") console.log(event.data.text);
 });
 ```
 
 ## run_at timing
 - `"document_start"` — after CSS is injected, before the DOM is constructed.
-- `"document_end"` — after the DOM is complete, before subresources load.
-- `"document_idle"` — preferred default; between `document_end` and `window.onload`.
+- `"document_end"` — after the DOM is complete, before all subresources have necessarily finished loading.
+- `"document_idle"` — preferred default; Chrome chooses a time between document_end and immediately after window.onload, with the DOM complete.
 
 ```json
 { "content_scripts": [{ "matches": ["https://*/*"], "js": ["early.js"], "run_at": "document_start" }] }
 ```
-The `<all_urls>` token may replace the pattern above to match all schemes the extension can access. <!-- allow-placeholder -->
+The `<all_urls>` token may replace the pattern above to match all schemes the extension can access.
 
 ## matches and match patterns
-A match pattern has the form `scheme://host/path` and supports `*` wildcards. `exclude_matches` removes pages `matches` would include. Examples: `https://*.nytimes.com/*`, `*://example.com/*`, and the special `<all_urls>` token. <!-- allow-placeholder -->
+A match pattern has the form `scheme://host/path` and supports `*` wildcards. `exclude_matches` removes pages `matches` would include. Examples: `https://*.nytimes.com/*`, `*://example.com/*`, and the special `<all_urls>` token.
 
 ## Injecting CSS
-Declare static CSS via `css` (honors the same `matches`/`run_at`), or inject programmatically with `chrome.scripting.insertCSS`. Reference packaged resources with `chrome.runtime.getURL` (and list them under `web_accessible_resources`).
+Declare static CSS via css (matches selects documents; CSS is injected before DOM construction, while run_at controls JavaScript), or inject programmatically with `chrome.scripting.insertCSS`. Reference packaged resources with `chrome.runtime.getURL` (and list them under `web_accessible_resources`).
 
 ## APIs available in content scripts
 Directly usable: `chrome.dom`, `chrome.i18n`, `chrome.storage`, and parts of `chrome.runtime` (`connect`, `getManifest`, `getURL`, `id`, `onConnect`, `onMessage`, `sendMessage`). Everything else goes through the service worker.

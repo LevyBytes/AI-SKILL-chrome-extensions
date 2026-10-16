@@ -1,6 +1,6 @@
 # Web Platform How-Tos
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 Using web-platform features from an MV3 extension: geolocation, screen capture, WebSockets, WebHID, WebUSB, and origin trials — including workarounds because the service worker has no DOM.
@@ -16,11 +16,17 @@ const stream = await navigator.mediaDevices.getDisplayMedia({ audio: true, video
 ```
 
 ## WebSockets (keeping the service worker alive)
-Extension service workers support `WebSocket` from Chrome 116 (`"minimum_chrome_version": "116"`). Because the worker shuts down after 30 seconds of inactivity, send a keepalive (e.g. every 20 seconds, leaving a 10-second margin); receiving WebSocket activity also resets the idle timer.
+WebSocket traffic extends extension-worker lifetime from Chrome 116 (`"minimum_chrome_version": "116"`). Because the worker shuts down after 30 seconds of inactivity, send a keepalive (e.g. every 20 seconds, leaving a 10-second margin); receiving WebSocket activity also resets the idle timer.
 
 ```js
-function keepAlive() {
-  const id = setInterval(() => { if (webSocket) webSocket.send("keepalive"); else clearInterval(id); }, 20 * 1000);
+function keepAlive(webSocket) {
+  const id = setInterval(() => {
+    if (webSocket.readyState === WebSocket.OPEN) webSocket.send("keepalive");
+    else if (webSocket.readyState !== WebSocket.CONNECTING) clearInterval(id);
+  }, 20 * 1000);
+  const stop = () => clearInterval(id);
+  webSocket.addEventListener("close", stop, { once: true });
+  return stop; // caller also stops the timer when the feature ends
 }
 ```
 
@@ -41,7 +47,7 @@ chrome.runtime.onMessage.addListener(async (m) => {
 Use `navigator.usb` (Chrome 118+); no manifest permission/key required. As with WebHID, `navigator.usb.requestDevice()` cannot run in the worker — call it from a page, message the worker, and enumerate with `navigator.usb.getDevices()`, opening each `USBDevice`.
 
 ## Origin trials
-Register the extension on the Chrome Origin Trials page using a stable extension ID (origin `chrome-extension://abcdefghijklmnopqrstuvwxyz`), then add the issued token(s) to the `trial_tokens` manifest key (an array). Some features also require an API permission. Confirm activation in the DevTools Application panel. Manifest tokens do not activate trials in content-script-injected pages; for those, create a third-party-match token and inject it as a meta tag.
+Register the extension on the Chrome Origin Trials page using a stable extension ID (origin `chrome-extension://aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` (replace with the real 32-character extension ID)), then add the issued token(s) to the `trial_tokens` manifest key (an array). Some features also require an API permission. Confirm activation in the DevTools Application panel. Manifest tokens do not activate trials in content-script-injected pages; for those, create a third-party-match token and inject it as a meta tag.
 
 ```js
 const otMeta = document.createElement("meta");

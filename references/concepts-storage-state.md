@@ -1,6 +1,6 @@
 # Storage, State & Cross-Origin Isolation
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 Choosing among the `chrome.storage` areas, persisting service-worker state, reading cookies, and opting into cross-origin isolation for powerful web features.
@@ -16,15 +16,16 @@ Choosing among the `chrome.storage` areas, persisting service-worker state, read
 Change content-script exposure with `setAccessLevel()` on the area.
 
 ```js
-await chrome.storage.local.set({ key: value });
-const result = await chrome.storage.local.get(["key"]);
 chrome.storage.onChanged.addListener((changes, namespace) => {
   for (const [key, { oldValue, newValue }] of Object.entries(changes)) console.log(namespace, key, oldValue, newValue);
 });
+// Run these calls from an async handler; value is the data being stored.
+await chrome.storage.local.set({ key: value });
+const result = await chrome.storage.local.get(["key"]);
 ```
 
 ## Persisting service-worker state
-An MV3 service worker is ephemeral, so in-memory variables are not durable. Inside the worker, `IndexedDB` and `Cache Storage` are available, but the Web Storage APIs (`Local Storage`, `Session Storage`) are not. Use `chrome.storage.local` for data that should survive restarts and `chrome.storage.session` for in-memory state to discard when the worker/browser stops. Extension storage is not cleared when the user clears browsing data.
+An MV3 service worker is ephemeral, so in-memory variables are not durable. Inside the worker, `IndexedDB` and `Cache Storage` are available, but the Web Storage APIs (`Local Storage`, `Session Storage`) are not. Use `chrome.storage.local` for data that should survive restarts and `chrome.storage.session` for state that survives worker termination but is discarded on extension disable/reload/update or browser restart. Extension storage is not cleared when the user clears browsing data.
 
 ## Cookies access
 To read/write site cookies, declare the `"cookies"` permission plus `host_permissions` for the hosts involved.

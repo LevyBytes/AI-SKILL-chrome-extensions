@@ -1,6 +1,6 @@
 # The MV3 Background Service Worker
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 In Manifest V3 the background page is replaced by an event-driven service worker registered through `background.service_worker`. It wakes to handle events, terminates when idle, has no DOM, and keeps no reliable in-memory state.
@@ -27,26 +27,34 @@ chrome.runtime.onInstalled.addListener((details) => {
 ```
 
 ## Termination and timers
-Chrome terminates the worker when 30 seconds of inactivity elapse, a single request exceeds 5 minutes, or a `fetch()` response takes over 30 seconds. Events and API calls reset these timers (API-call resets since Chrome 110; WebSocket messages Chrome 116+; long-lived ports Chrome 114+; offscreen messages Chrome 109+; native messaging Chrome 105+).
+Chrome terminates the worker when 30 seconds of inactivity elapse, a single request exceeds 5 minutes, or a `fetch()` response takes over 30 seconds. Events and API calls reset these timers (API-call resets since Chrome 110; WebSocket messages Chrome 116+; messages sent through long-lived ports Chrome 114+; merely opening a port no longer resets the timer; offscreen messages Chrome 109+; native messaging Chrome 105+). Some prompting APIs may exceed five minutes in Chrome 116+; active debugger sessions keep workers alive in Chrome 118+. Do not treat the usual timeout rules as unconditional.
 
 ## Global state is lost — use chrome.storage
 Global variables do not survive shutdown. Persist with `chrome.storage` (recommended), `IndexedDB`, or `CacheStorage`. The Web Storage API is **not** available in extension service workers.
 
 ```js
-async function increment() {
-  const { count = 0 } = await chrome.storage.local.get("count");
-  await chrome.storage.local.set({ count: count + 1 });
+let incrementQueue = Promise.resolve();
+function increment() {
+  const operation = incrementQueue.then(async () => {
+    const { count = 0 } = await chrome.storage.local.get("count");
+    await chrome.storage.local.set({ count: count + 1 });
+    return count + 1;
+  });
+  incrementQueue = operation.catch(() => {});
+  return operation;
 }
 ```
+
+This queue serializes this worker's callers only. Route all writers through it, or use an IndexedDB transaction for cross-context read-modify-write work.
 
 ## Keep listeners at the top level
 Declare event handlers in the global scope so they register synchronously when the worker starts; nesting a listener inside an async callback risks the worker shutting down before it attaches.
 
 ```js
 // Better: register at top level, do async work separately
-chrome.action.onClicked.addListener(handleActionClick);
+chrome.action.onClicked.addListener((tab) => console.log("clicked:", tab.id));
 chrome.storage.local.get(["badgeText"], ({ badgeText }) => {
-  chrome.action.setBadgeText({ text: badgeText });
+  chrome.action.setBadgeText({ text: badgeText ?? "" });
 });
 ```
 
@@ -61,7 +69,7 @@ chrome.alarms.onAlarm.addListener((alarm) => { if (alarm.name === "refresh") {/*
 ```
 
 ## No DOM — use offscreen documents
-Service workers cannot access the DOM. Create a hidden offscreen document with `chrome.offscreen` (permission `"offscreen"`). `createDocument()` takes `url` (a bundled static HTML file), `reasons` (a `Reason` array), and `justification`. Only one offscreen document may exist at a time, and only `chrome.runtime` is available inside it.
+Service workers cannot access the DOM. Create a hidden offscreen document with `chrome.offscreen` (permission `"offscreen"`). `createDocument()` takes `url` (a bundled static HTML file), `reasons` (a `Reason` array), and `justification`. One offscreen document per profile may exist; only chrome.runtime is available inside it. Use the serialized creation helper in [Offscreen document lifecycle](offscreen-document-lifecycle.md).
 
 ```js
 chrome.offscreen.createDocument({

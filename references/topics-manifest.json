@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "topics": [
+    {
+      "topic": "Manifest Format & Core Keys",
+      "file": "references/manifest-format-core-keys.md",
+      "summary": "Open when declaring the manifest version, name, version, icons, default locale, or other identity keys.",
+      "keywords": ["manifest_version", "name", "version", "icons", "default_locale", "key", "minimum_chrome_version"]},
+    {
+      "topic": "Manifest Capability Keys",
+      "file": "references/manifest-capability-keys.md",
+      "summary": "Open when declaring actions, background workers, content scripts, permissions, CSP, side panels, or OAuth in the manifest.",
+      "keywords": ["action", "background", "content_scripts", "permissions", "content_security_policy", "side_panel", "oauth2"]},
+    {
+      "topic": "Manifest Specialized Keys",
+      "file": "references/manifest-specialized-keys.md",
+      "summary": "Open when declaring specialized file-handler, input, speech, isolation, shared-module, trial-token, or DevTools manifest keys.",
+      "keywords": ["file_handlers", "input_components", "tts_engine", "cross_origin_embedder_policy", "shared_modules", "trial_tokens", "devtools_page"]},
+    {
+      "topic": "Permissions List",
+      "file": "references/permissions-list.md",
+      "summary": "Open when checking the exact spelling and purpose of a named permission string.",
+      "keywords": ["permissions", "permission strings", "optional_permissions", "host_permissions", "all_urls"]},
+    {
+      "topic": "Reference Language Selection",
+      "file": "references/languages.md",
+      "summary": "Open when you need a language version of this skill's references other than English.",
+      "keywords": ["reference language", "translated references", "language selection"]}
+  ]
+}

@@ -1,15 +1,15 @@
 # Identity & Authentication
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 APIs for authentication and credentials: OAuth2 / web auth flows (`chrome.identity`), ChromeOS session/profile state (`chrome.loginState`), smart-card / certificate provisioning and signing (`chrome.certificateProvider`, `chrome.platformKeys`), and proxying WebAuthn to a remote authenticator (`chrome.webAuthenticationProxy`).
 
-## chrome.identity
+## [chrome.identity](https://developer.chrome.com/docs/extensions/reference/api/identity)
 - **Purpose:** obtain OAuth2 access tokens and run interactive web auth flows.
-- **Permission:** `"identity"`.
+- **Permission:** `"identity"`; getProfileUserInfo needs `"identity.email"` to return email and ID.
 - **Key methods:**
-  - `getAuthToken(details?)` resolves to a `GetAuthTokenResult`. Uses the `client_id` and `scopes` from the manifest `oauth2` key. Set `interactive: true` to allow Chrome to prompt; otherwise it fails silently when interaction is required. Google accounts only.
+  - `getAuthToken(details?)` resolves to a `GetAuthTokenResult`. Uses the `client_id` and `scopes` from the manifest `oauth2` key. Set `interactive: true` to allow Chrome to prompt; otherwise it reports an error without displaying consent UI when interaction is required. Google accounts only.
   - `getRedirectURL(path?)` returns a string redirect URL for `launchWebAuthFlow`, of the form `https://EXTENSION_ID.chromiumapp.org/`.
   - `launchWebAuthFlow(details)` resolves to the redirect URL string. Runs an OAuth2 flow against any provider in a browser window — use this for non-Google providers.
   - `removeCachedAuthToken(details)` removes one token from the in-memory cache.
@@ -20,9 +20,11 @@ APIs for authentication and credentials: OAuth2 / web auth flows (`chrome.identi
 - **Manifest `oauth2` key** (required for `getAuthToken`):
 
 ```json
-"oauth2": {
-  "client_id": "yourExtensionOAuthClientID.apps.googleusercontent.com",
-  "scopes": ["https://www.googleapis.com/auth/contacts.readonly"]
+{
+  "oauth2": {
+    "client_id": "yourExtensionOAuthClientID.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/contacts.readonly"]
+  }
 }
 ```
 
@@ -38,7 +40,7 @@ chrome.identity.getAuthToken({ interactive: true }, (token) => {
 });
 ```
 
-## chrome.loginState
+## [chrome.loginState](https://developer.chrome.com/docs/extensions/reference/api/loginState)
 - **Purpose:** read the ChromeOS profile type and session state. ChromeOS only (Chrome 78+; Promises Chrome 96+).
 - **Permission:** `"loginState"`.
 - **Key methods:** `getProfileType()` resolves to a `ProfileType`; `getSessionState()` resolves to a `SessionState`.
@@ -50,7 +52,7 @@ const state = await chrome.loginState.getSessionState();
 if (state === "IN_SESSION") console.log("active user session");
 ```
 
-## chrome.certificateProvider
+## [chrome.certificateProvider](https://developer.chrome.com/docs/extensions/reference/api/certificateProvider)
 - **Purpose:** expose client certificates (e.g. smart card) to ChromeOS and perform TLS client-auth signing, including PIN dialogs. ChromeOS only (Chrome 46+).
 - **Permission:** `"certificateProvider"`.
 - **Key methods:** `setCertificates(details)`; `reportSignature(details)`; `requestPin(details)` resolves to a `PinResponseDetails`; `stopPinRequest(details)`.
@@ -69,7 +71,7 @@ chrome.certificateProvider.onSignatureRequested.addListener(async (req) => {
 });
 ```
 
-## chrome.platformKeys
+## [chrome.platformKeys](https://developer.chrome.com/docs/extensions/reference/api/platformKeys)
 - **Purpose:** access ChromeOS-managed client certificates and use their keys for signing/decryption via a WebCrypto-style interface. ChromeOS only (Chrome 45+).
 - **Permission:** `"platformKeys"`.
 - **Key methods:** `selectClientCertificates(details)` resolves to `Match[]`; `getKeyPair(certificate, parameters, callback)`; `getKeyPairBySpki(publicKeySpkiDer, parameters, callback)` (Chrome 85+); `subtleCrypto()`; `verifyTLSServerCertificate(details)` (Chrome 121+).
@@ -82,7 +84,7 @@ const matches = await chrome.platformKeys.selectClientCertificates({
 });
 ```
 
-## chrome.webAuthenticationProxy
+## [chrome.webAuthenticationProxy](https://developer.chrome.com/docs/extensions/reference/api/webAuthenticationProxy)
 - **Purpose:** act as the proxy for WebAuthn requests, forwarding `navigator.credentials.create()` / `.get()` and platform-authenticator checks to a remote authenticator. Chrome 115+.
 - **Permission:** `"webAuthenticationProxy"`.
 - **Key methods:** `attach()`; `detach()`; `completeCreateRequest(details)`; `completeGetRequest(details)`; `completeIsUvpaaRequest(details)`.

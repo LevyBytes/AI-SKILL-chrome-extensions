@@ -1,11 +1,11 @@
 # Internationalization (i18n)
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 `chrome.i18n` localizes extension UI and metadata using `_locales/` message catalogs and the `default_locale` manifest key, plus runtime helpers for message lookup, UI language, accepted languages, and language detection.
 
-## chrome.i18n
+## [chrome.i18n](https://developer.chrome.com/docs/extensions/reference/api/i18n)
 - **Purpose:** retrieve localized strings, the browser UI and accepted languages, and detect the language of supplied text.
 - **Permission:** none.
 - **Key methods:**

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "topics": [
+    {
+      "topic": "Runtime, Events & Lifecycle Timers",
+      "file": "references/api-runtime-lifecycle.md",
+      "summary": "Open when handling extension runtime messages, install or startup events, shared event listeners, alarms, idle state, or power requests.",
+      "keywords": ["runtime", "events", "alarms", "idle", "power", "onInstalled", "onMessage"]},
+    {
+      "topic": "Offscreen, Messaging Services & Shared Types",
+      "file": "references/api-runtime-misc.md",
+      "summary": "Open when using offscreen documents, cloud messaging, or shared extension types.",
+      "keywords": ["offscreen", "gcm", "instanceID", "extension", "types", "extensionTypes", "dom"]},
+    {
+      "topic": "Scripting & User Scripts",
+      "file": "references/api-scripting-userscripts.md",
+      "summary": "Open when injecting scripts or CSS, registering dynamic content scripts, or running user scripts.",
+      "keywords": ["scripting", "userScripts", "executeScript", "insertCSS", "ISOLATED", "MAIN"]},
+    {
+      "topic": "Tabs, Tab Groups & Windows",
+      "file": "references/api-tabs-windows.md",
+      "summary": "Open when querying, creating, updating, grouping, or messaging browser tabs and windows.",
+      "keywords": ["tabs", "tabGroups", "windows", "query", "sendMessage", "activeTab"]},
+    {
+      "topic": "Navigation, History, Sessions & Search",
+      "file": "references/api-navigation-history.md",
+      "summary": "Open when tracking navigation, restoring sessions, managing browsing history or bookmarks, or searching browser content.",
+      "keywords": ["webNavigation", "sessions", "history", "topSites", "bookmarks", "readingList", "processes", "search"]},
+    {
+      "topic": "Network Filtering & Request APIs",
+      "file": "references/api-network-filtering.md",
+      "summary": "Open when filtering or redirecting requests, declaring network rules, or accessing proxies, cookies, and DNS.",
+      "keywords": ["declarativeNetRequest", "webRequest", "declarativeContent", "proxy", "cookies", "dns"]},
+    {
+      "topic": "Storage & Browser Settings",
+      "file": "references/api-storage-settings.md",
+      "summary": "Open when storing extension data or configuring browser content, privacy, fonts, and browsing-data settings.",
+      "keywords": ["storage", "contentSettings", "privacy", "fontSettings", "browsingData", "QUOTA_BYTES"]},
+    {
+      "topic": "UI Surfaces",
+      "file": "references/api-ui-surfaces.md",
+      "summary": "Open when building toolbar actions, context menus, side panels, omnibox interactions, notifications, or keyboard commands.",
+      "keywords": ["action", "contextMenus", "sidePanel", "omnibox", "notifications", "commands"]},
+    {
+      "topic": "DevTools Extension APIs & Debugger",
+      "file": "references/api-devtools-debugger.md",
+      "summary": "Open when extending DevTools panels and inspected pages or using the debugger protocol from an extension.",
+      "keywords": ["devtools.inspectedWindow", "devtools.network", "devtools.panels", "devtools.performance", "devtools.recorder", "debugger"]},
+    {
+      "topic": "Identity & Authentication",
+      "file": "references/api-identity-auth.md",
+      "summary": "Open when authenticating users with OAuth, certificates, platform keys, or WebAuthn proxy APIs.",
+      "keywords": ["identity", "loginState", "certificateProvider", "platformKeys", "webAuthenticationProxy", "oauth2"]},
+    {
+      "topic": "Media Capture & Speech",
+      "file": "references/api-media-capture.md",
+      "summary": "Open when capturing tabs, desktops, or pages, selecting audio devices, or using text-to-speech APIs.",
+      "keywords": ["tabCapture", "desktopCapture", "pageCapture", "audio", "tts", "ttsEngine"]},
+    {
+      "topic": "Downloads, Management & Permissions",
+      "file": "references/api-downloads-management-permissions.md",
+      "summary": "Open when managing downloads, inspecting installed extensions, or requesting optional permissions at runtime.",
+      "keywords": ["downloads", "management", "permissions", "optional_permissions", "request"]},
+    {
+      "topic": "System & Hardware",
+      "file": "references/api-system-hardware.md",
+      "summary": "Open when reading system information, printing, scanning documents, or configuring accessibility features.",
+      "keywords": ["system.cpu", "system.display", "system.memory", "system.storage", "systemLog", "printing", "printerProvider", "printingMetrics", "documentScan", "accessibilityFeatures"]},
+    {
+      "topic": "Enterprise & ChromeOS",
+      "file": "references/api-enterprise-chromeos.md",
+      "summary": "Open when using enterprise or ChromeOS extension APIs for devices, filesystems, input methods, wallpaper, or VPNs.",
+      "keywords": ["enterprise.deviceAttributes", "enterprise.hardwarePlatform", "enterprise.login", "enterprise.networkingAttributes", "enterprise.platformKeys", "fileBrowserHandler", "fileSystemProvider", "input.ime", "wallpaper", "vpnProvider"]},
+    {
+      "topic": "Internationalization (i18n)",
+      "file": "references/api-i18n.md",
+      "summary": "Open when localizing extension messages with chrome.i18n, default_locale, and _locales.",
+      "keywords": ["i18n", "getMessage", "default_locale", "_locales", "messages.json"]},
+    {
+      "topic": "Reference Language Selection",
+      "file": "references/languages.md",
+      "summary": "Open when you need a language version of this skill's references other than English.",
+      "keywords": ["reference language", "translated references", "language selection"]}
+  ]
+}

@@ -1,6 +1,6 @@
 # UI & DevTools How-Tos
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 Recipes for accessible extension UI, page favicons, localizing UI strings, notifications, and extending Chrome DevTools.
@@ -36,11 +36,13 @@ Request the `"notifications"` permission and create with `chrome.notifications.c
 chrome.notifications.create("notify-id", {
   type: "progress", title: "Primary Title", message: "Primary message", iconUrl: "icon.png", progress: 42,
 });
-chrome.notifications.onButtonClicked.addListener(replyBtnClick);
+chrome.notifications.onButtonClicked.addListener((id, buttonIndex) => {
+  console.log("notification button:", id, buttonIndex);
+});
 ```
 
 ## Extending DevTools
-Add the `devtools_page` manifest key pointing at a local HTML file; that page loads when DevTools opens and is the only context with `chrome.devtools.inspectedWindow`, `chrome.devtools.network`, `chrome.devtools.panels`, `chrome.devtools.recorder`, and `chrome.devtools.performance`. Use `chrome.devtools.panels.create` to add a panel and `panels.elements.createSidebarPane` (then `setPage`/`setObject`/`setExpression`) for an Elements sidebar. Run code in the inspected page with `chrome.devtools.inspectedWindow.eval`, or inject via `chrome.scripting.executeScript` targeting `chrome.devtools.inspectedWindow.tabId`.
+Add the `devtools_page` manifest key pointing at a local HTML file; that page loads when DevTools opens and and its extension panels/sidebars have access to `chrome.devtools.inspectedWindow`, `chrome.devtools.network`, `chrome.devtools.panels`, `chrome.devtools.recorder`, and `chrome.devtools.performance`. Use `chrome.devtools.panels.create` to add a panel and `panels.elements.createSidebarPane` (then `setPage`/`setObject`/`setExpression`) for an Elements sidebar. Run code in the inspected page with `chrome.devtools.inspectedWindow.eval`, or inject via `chrome.scripting.executeScript` targeting `chrome.devtools.inspectedWindow.tabId`.
 
 ```js
 chrome.devtools.panels.create("My Panel", "MyPanelIcon.png", "Panel.html", (panel) => {

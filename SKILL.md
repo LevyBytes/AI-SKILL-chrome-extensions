@@ -1,130 +1,55 @@
 ---
 name: chrome-extensions
-description: >-
-  Use when building, scaffolding, or debugging Chrome, Chromium, or Edge Manifest V3 browser
-  extensions: service workers, content scripts, popups, options pages, side panels, omnibox,
-  context menus, message passing, permissions, host_permissions, native messaging, loading unpacked
-  extensions, MV2-to-MV3 migration, manifest.json with manifest_version 3, or chrome.* / browser.*
-  APIs such as action, tabs, scripting, storage, runtime, alarms, permissions, declarativeNetRequest,
-  webRequest, identity, sidePanel, commands, cookies, notifications, and devtools. Do not use for
-  Firefox/Safari-specific WebExtension behavior, ordinary web-page automation, or Chrome Web Store
-  listing/review/publishing beyond manifest keys.
-covers:
-  - permissions
-  - optional-permissions
-  - service worker
-  - alarms
-  - oninstalled
-  - onmessage
-  - offscreen
-  - scripting
-  - executescript
-  - main
-  - sendmessage
-  - activetab
+description: "Use when building, scaffolding, or debugging Chrome, Chromium, or Edge Manifest V3 browser extensions: service workers, content scripts, popups, options pages, side panels, omnibox, context menus, message passing, permissions, host_permissions, native messaging, loading unpacked extensions, MV2-to-MV3 migration, manifest.json with manifest_version 3, or chrome.* / browser.* APIs such as action, tabs, scripting, storage, runtime, alarms, permissions, declarativeNetRequest, webRequest, identity, sidePanel, commands, cookies, notifications, and devtools. Do not use for Firefox/Safari-specific WebExtension behavior, ordinary web-page automation, or Chrome Web Store listing/review/publishing beyond manifest keys."
+metadata:
+  last-updated: "2026-10-09"
 ---
 
-# Chrome Extensions (Manifest V3) API Reference
+# Context Router
 
-Faithful, task-routed reference for building and debugging **Manifest V3** Chrome/Chromium
-extensions — the `chrome.*` APIs, the manifest format, and the core concepts. Manifest V3 only;
-Manifest V2 appears only as labeled migration context.
+Choose the API, concept, manifest key or implementation reference. Check its execution context, permissions and Chrome version before using an example.
 
-## When to use this
+| Topic | Open when | Read |
+| --- | --- | --- |
+| Runtime, Events & Lifecycle Timers | Open when handling extension runtime messages, install or startup events, shared event listeners, alarms, idle state, or power requests. | [Runtime, Events & Lifecycle Timers](references/api-runtime-lifecycle.md) |
+| Offscreen, Messaging Services & Shared Types | Open when using offscreen documents, cloud messaging, or shared extension types. | [Offscreen, Messaging Services & Shared Types](references/api-runtime-misc.md) |
+| Scripting & User Scripts | Open when injecting scripts or CSS, registering dynamic content scripts, or running user scripts. | [Scripting & User Scripts](references/api-scripting-userscripts.md) |
+| Tabs, Tab Groups & Windows | Open when querying, creating, updating, grouping, or messaging browser tabs and windows. | [Tabs, Tab Groups & Windows](references/api-tabs-windows.md) |
+| Navigation, History, Sessions & Search | Open when tracking navigation, restoring sessions, managing browsing history or bookmarks, or searching browser content. | [Navigation, History, Sessions & Search](references/api-navigation-history.md) |
+| Network Filtering & Request APIs | Open when filtering or redirecting requests, declaring network rules, or accessing proxies, cookies, and DNS. | [Network Filtering & Request APIs](references/api-network-filtering.md) |
+| Storage & Browser Settings | Open when storing extension data or configuring browser content, privacy, fonts, and browsing-data settings. | [Storage & Browser Settings](references/api-storage-settings.md) |
+| UI Surfaces | Open when building toolbar actions, context menus, side panels, omnibox interactions, notifications, or keyboard commands. | [UI Surfaces](references/api-ui-surfaces.md) |
+| DevTools Extension APIs & Debugger | Open when extending DevTools panels and inspected pages or using the debugger protocol from an extension. | [DevTools Extension APIs & Debugger](references/api-devtools-debugger.md) |
+| Identity & Authentication | Open when authenticating users with OAuth, certificates, platform keys, or WebAuthn proxy APIs. | [Identity & Authentication](references/api-identity-auth.md) |
+| Media Capture & Speech | Open when capturing tabs, desktops, or pages, selecting audio devices, or using text-to-speech APIs. | [Media Capture & Speech](references/api-media-capture.md) |
+| Downloads, Management & Permissions | Open when managing downloads, inspecting installed extensions, or requesting optional permissions at runtime. | [Downloads, Management & Permissions](references/api-downloads-management-permissions.md) |
+| System & Hardware | Open when reading system information, printing, scanning documents, or configuring accessibility features. | [System & Hardware](references/api-system-hardware.md) |
+| Enterprise & ChromeOS | Open when using enterprise or ChromeOS extension APIs for devices, filesystems, input methods, wallpaper, or VPNs. | [Enterprise & ChromeOS](references/api-enterprise-chromeos.md) |
+| Internationalization (i18n) | Open when localizing extension messages with chrome.i18n, default_locale, and _locales. | [Internationalization (i18n)](references/api-i18n.md) |
+| Extension Architecture & Getting Started | Open when choosing extension components and understanding how they communicate. | [Extension Architecture & Getting Started](references/concepts-architecture.md) |
+| The MV3 Background Service Worker | Open when handling service-worker lifecycle limits, lost state, timers, or background work. | [The MV3 Background Service Worker](references/concepts-service-workers.md) |
+| Content Scripts | Open when choosing content-script execution worlds, injection timing, or match patterns. | [Content Scripts](references/concepts-content-scripts.md) |
+| Message Passing | Open when passing one-time messages, maintaining ports, or communicating with external extensions and native hosts. | [Message Passing](references/concepts-messaging.md) |
+| Declaring Permissions & Match Patterns | Open when choosing required or optional permissions, host permissions, activeTab, or match patterns. | [Declaring Permissions & Match Patterns](references/concepts-permissions.md) |
+| Storage, State & Cross-Origin Isolation | Open when choosing storage areas, persisting worker state, handling cookies, or configuring cross-origin isolation. | [Storage, State & Cross-Origin Isolation](references/concepts-storage-state.md) |
+| Extension Lifecycle & Updates | Open when handling installation and updates, rolling out new versions, or setting an uninstall URL. | [Extension Lifecycle & Updates](references/concepts-lifecycle-updates.md) |
+| Security & Privacy | Open when configuring content security policy, resource exposure, remote-code restrictions, or privacy behavior. | [Security & Privacy](references/concepts-security-privacy.md) |
+| MV2 to MV3 Migration | Open when migrating Manifest V2 extension behavior to Manifest V3. | [MV2 to MV3 Migration](references/concepts-mv2-to-mv3-migration.md) |
+| Manifest Format & Core Keys | Open when declaring the manifest version, name, version, icons, default locale, or other identity keys. | [Manifest Format & Core Keys](references/manifest-format-core-keys.md) |
+| Manifest Capability Keys | Open when declaring actions, background workers, content scripts, permissions, CSP, side panels, or OAuth in the manifest. | [Manifest Capability Keys](references/manifest-capability-keys.md) |
+| Manifest Specialized Keys | Open when declaring specialized file-handler, input, speech, isolation, shared-module, trial-token, or DevTools manifest keys. | [Manifest Specialized Keys](references/manifest-specialized-keys.md) |
+| Permissions List | Open when checking the exact spelling and purpose of a named permission string. | [Permissions List](references/permissions-list.md) |
+| UI & DevTools How-Tos | Open when implementing accessible extension UI, favicons, localized formats, notifications, or DevTools interfaces. | [UI & DevTools How-Tos](references/howto-ui-and-devtools.md) |
+| Web Platform How-Tos | Open when using geolocation, screen capture, WebSockets, WebHID, WebUSB, or origin trials in extension contexts. | [Web Platform How-Tos](references/howto-web-platform.md) |
+| Integrate & Distribute | Open when integrating OAuth or analytics, packaging or self-hosting an extension, or loading it unpacked. | [Integrate & Distribute](references/howto-integrate-distribute.md) |
+| Test & Debug | Open when testing or debugging service workers, popups, or content scripts with browser tools and test frameworks. | [Test & Debug](references/howto-test-debug.md) |
 
-Use this skill whenever the task involves a browser extension and any of: a `manifest.json` with
-`"manifest_version": 3`; a background **service worker**, **content scripts**, popup, options page,
-**side panel**, **omnibox**, or **context menus**; any `chrome.*`/`browser.*` extension API; message
-passing or native messaging; declaring `permissions`/`host_permissions`; an MV2→MV3 migration; or
-loading an unpacked extension. It fires even when "Chrome extension" is never said.
+Open the [reference index](references/INDEX.md) or [topic catalogs](references/topics.json) for broader lookup.
 
-**Do not use when** the task is: Firefox/Safari WebExtension specifics or the `webextension-polyfill`;
-general web or Node.js development unrelated to extensions; npm package authoring; Puppeteer/Playwright
-automation of normal web pages (driving an *extension* in tests is in scope — see the test reference);
-Chrome DevTools usage as an end user; or the Web Store listing/review/publishing workflow beyond
-manifest keys. Those belong to another skill or a generic answer.
+# Language Translations
 
-## Task router
+[Reference Language Selection](references/languages.md)
 
-Load only the reference the task needs.
+# Context For Open Source
 
-| If the task is about... | Read |
-| --- | --- |
-| chrome.runtime, events, alarms, idle, power, onInstalled/onStartup | references/api-runtime-lifecycle.md |
-| offscreen documents, gcm/instanceID push, chrome.extension, types/extensionTypes/dom | references/api-runtime-misc.md |
-| injecting scripts/CSS, chrome.scripting.executeScript, dynamic content scripts, userScripts | references/api-scripting-userscripts.md |
-| tabs, tab groups, windows (query/create/update/sendMessage) | references/api-tabs-windows.md |
-| webNavigation, sessions, history, bookmarks, readingList, topSites, processes, search | references/api-navigation-history.md |
-| blocking/redirecting requests, declarativeNetRequest, webRequest, proxy, cookies, dns | references/api-network-filtering.md |
-| chrome.storage areas/quotas, contentSettings, privacy, fontSettings, browsingData | references/api-storage-settings.md |
-| toolbar action/badge, contextMenus, sidePanel, omnibox, notifications, commands shortcuts | references/api-ui-surfaces.md |
-| DevTools panels/inspectedWindow/network, chrome.debugger (CDP) | references/api-devtools-debugger.md |
-| OAuth tokens, chrome.identity, loginState, certificate/platform keys, WebAuthn proxy | references/api-identity-auth.md |
-| capturing tab/screen media, MHTML, audio devices, text-to-speech | references/api-media-capture.md |
-| downloads, managing installed extensions, runtime permission requests | references/api-downloads-management-permissions.md |
-| system info (cpu/display/memory/storage), printing, scanning, accessibility features | references/api-system-hardware.md |
-| enterprise/ChromeOS APIs, file system provider, IME, wallpaper, VPN | references/api-enterprise-chromeos.md |
-| localizing strings, getMessage, default_locale, _locales | references/api-i18n.md |
-| how the components fit together / getting started | references/concepts-architecture.md |
-| service worker lifecycle, why state is lost, alarms vs setTimeout, offscreen | references/concepts-service-workers.md |
-| content-script isolated vs MAIN world, run_at, match patterns | references/concepts-content-scripts.md |
-| sendMessage/onMessage, ports, external messaging, native messaging | references/concepts-messaging.md |
-| which permission/host_permission to declare, activeTab, match-pattern syntax | references/concepts-permissions.md |
-| choosing a storage area, persisting state, cookies, cross-origin isolation | references/concepts-storage-state.md |
-| install/update events, update rollout, setUninstallURL | references/concepts-lifecycle-updates.md |
-| CSP, no remotely hosted code, web_accessible_resources, privacy | references/concepts-security-privacy.md |
-| converting an MV2 extension to MV3 | references/concepts-mv2-to-mv3-migration.md |
-| manifest_version/name/version/icons/default_locale and other identity keys | references/manifest-format-core-keys.md |
-| action/background/content_scripts/permissions/CSP/side_panel/oauth2 keys | references/manifest-capability-keys.md |
-| file_handlers/input_components/tts_engine/COEP-COOP/shared_modules/trial_tokens/devtools_page | references/manifest-specialized-keys.md |
-| confirming a permission string exists and is spelled correctly | references/permissions-list.md |
-| accessibility, favicons, localization formats, notifications UI, extending DevTools | references/howto-ui-and-devtools.md |
-| geolocation, screen capture, WebSockets, WebHID, WebUSB, origin trials | references/howto-web-platform.md |
-| OAuth setup, Google Analytics 4, packaging/self-hosting and loading unpacked (not Web Store review/listing) | references/howto-integrate-distribute.md |
-| debugging the worker/popup/content scripts, Jest, Puppeteer, Selenium | references/howto-test-debug.md |
-
-Start from references/INDEX.md if the right file is not obvious.
-
-## Runtime workflow
-
-1. Load this SKILL.md and use the task-router to pick the reference for the API, concept, or
-   manifest key in play; read only the files you need.
-2. Confirm the required `permissions` and `host_permissions` for every API used (cross-check against
-   references/permissions-list.md), and that the manifest is MV3-correct (`"manifest_version": 3`).
-3. Apply MV3-correct patterns; if a sample uses an MV2 pattern, flag it and convert it
-   (references/concepts-mv2-to-mv3-migration.md).
-4. Report any detail you cannot verify against a reference rather than guessing; never invent an API
-   name, signature, permission string, or manifest key.
-5. Before claiming the skill covers an API, confirm it appears in references/topics.json or a
-   reference file (the verifier enforces the full 83-API coverage list).
-
-## Gotchas
-
-Recurring failure modes and what to do instead live in the sibling [GOTCHA.md](GOTCHA.md).
-
-## References
-
-All depth lives in `references/` (start at references/INDEX.md; metadata in references/topics.json).
-Put routing here in SKILL.md; open a reference only when the router points to it. The references are
-organized by topic, not one file per source.
-
-## Official documentation
-
-Includes original content written for this skill. The official documentation is at https://developer.chrome.com/docs/extensions — consult it to verify anything uncertain, conflicting, or version-specific.
-
-## Verification notes
-
-Ground-truth checks for this package (run from the repository root):
-
-```powershell
-python work/verify_chrome_extensions.py .agents/skills/chrome-extensions
-python "$env:DEVROOT\SKILLS\skills\skill-drafting\scripts\validate_skill_package.py" "$env:DEVROOT\SKILLS\skills\chrome-extensions"
-```
-
-`work/verify_chrome_extensions.py` asserts: every reference is listed in references/INDEX.md and has
-exactly one references/topics.json entry; every reference has an `## Overview` and a `## See also`
-whose `references/*.md` links resolve; a curated preserve-glossary of verbatim terms appears in the
-references; and all 83 `chrome.*` APIs are covered. `validate_skill_package.py` checks the package
-structure and that no unresolved placeholder text remains. When extending the skill, re-run both
-and confirm every API name, signature, permission string, and manifest key still matches the
-official docs exactly (MV3-correct; MV2 only as labeled migration context).
+Skill reference documentation is interpreted content for use in open source projects. Check against [official documentation sources](https://developer.chrome.com/docs/extensions) when dealing with defects or issues that may come up from interpreting this skill's references.

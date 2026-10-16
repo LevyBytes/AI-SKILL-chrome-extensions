@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "topics": [
+    {
+      "topic": "Extension Architecture & Getting Started",
+      "file": "references/concepts-architecture.md",
+      "summary": "Open when choosing extension components and understanding how they communicate.",
+      "keywords": ["architecture", "manifest", "service worker", "content scripts", "components"]},
+    {
+      "topic": "The MV3 Background Service Worker",
+      "file": "references/concepts-service-workers.md",
+      "summary": "Open when handling service-worker lifecycle limits, lost state, timers, or background work.",
+      "keywords": ["service worker", "background", "lifecycle", "termination", "alarms", "offscreen"]},
+    {
+      "topic": "Content Scripts",
+      "file": "references/concepts-content-scripts.md",
+      "summary": "Open when choosing content-script execution worlds, injection timing, or match patterns.",
+      "keywords": ["content scripts", "isolated world", "MAIN", "run_at", "match patterns", "executeScript"]},
+    {
+      "topic": "Message Passing",
+      "file": "references/concepts-messaging.md",
+      "summary": "Open when passing one-time messages, maintaining ports, or communicating with external extensions and native hosts.",
+      "keywords": ["messaging", "sendMessage", "onMessage", "Port", "connect", "nativeMessaging"]},
+    {
+      "topic": "Declaring Permissions & Match Patterns",
+      "file": "references/concepts-permissions.md",
+      "summary": "Open when choosing required or optional permissions, host permissions, activeTab, or match patterns.",
+      "keywords": ["permissions", "host_permissions", "optional_permissions", "activeTab", "match patterns"]},
+    {
+      "topic": "Storage, State & Cross-Origin Isolation",
+      "file": "references/concepts-storage-state.md",
+      "summary": "Open when choosing storage areas, persisting worker state, handling cookies, or configuring cross-origin isolation.",
+      "keywords": ["storage", "state", "cookies", "cross_origin_embedder_policy", "cross_origin_opener_policy"]},
+    {
+      "topic": "Extension Lifecycle & Updates",
+      "file": "references/concepts-lifecycle-updates.md",
+      "summary": "Open when handling installation and updates, rolling out new versions, or setting an uninstall URL.",
+      "keywords": ["lifecycle", "onInstalled", "onStartup", "update", "onUpdateAvailable", "setUninstallURL"]},
+    {
+      "topic": "Security & Privacy",
+      "file": "references/concepts-security-privacy.md",
+      "summary": "Open when configuring content security policy, resource exposure, remote-code restrictions, or privacy behavior.",
+      "keywords": ["security", "remotely hosted code", "content_security_policy", "web_accessible_resources", "privacy"]},
+    {
+      "topic": "MV2 to MV3 Migration",
+      "file": "references/concepts-mv2-to-mv3-migration.md",
+      "summary": "Open when migrating Manifest V2 extension behavior to Manifest V3.",
+      "keywords": ["migration", "manifest_version", "service_worker", "scripting", "declarativeNetRequest", "MV2"]},
+    {
+      "topic": "Reference Language Selection",
+      "file": "references/languages.md",
+      "summary": "Open when you need a language version of this skill's references other than English.",
+      "keywords": ["reference language", "translated references", "language selection"]}
+  ]
+}

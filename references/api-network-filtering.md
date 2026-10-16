@@ -1,11 +1,11 @@
 # Network Filtering & Request APIs
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 How an MV3 extension shapes, observes, and configures network traffic: declarative rule-based filtering, observational request monitoring, page-state action enabling, proxy config, cookie access, and DNS lookup. In MV3, blocking the network is primarily a declarative task.
 
-## chrome.declarativeNetRequest
+## [chrome.declarativeNetRequest](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest)
 - **Purpose:** block or modify network requests through declarative rules the browser evaluates internally, so the extension never sees request content.
 - **Permission:** `"declarativeNetRequest"` (grants `block`, `allow`, `allowAllRequests` rules; shows an install warning) or `"declarativeNetRequestWithHostAccess"` (no warning but requires `host_permissions`). `"declarativeNetRequestFeedback"` enables `getMatchedRules()` and `onRuleMatchedDebug`.
 - **Manifest key:** `"declarative_net_request"` with `"rule_resources"`, an array of `{ "id", "enabled", "path" }` objects pointing at static ruleset JSON files.
@@ -25,7 +25,7 @@ await chrome.declarativeNetRequest.updateDynamicRules({
 });
 ```
 
-## chrome.webRequest
+## [chrome.webRequest](https://developer.chrome.com/docs/extensions/reference/api/webRequest)
 - **Purpose:** observe and analyze web traffic, and (where permitted) intercept requests in flight.
 - **Permission:** `"webRequest"` plus `host_permissions`. `"webRequestBlocking"` enables synchronous blocking handlers, but **in Manifest V3 it is restricted to policy-installed extensions** — the MV3 path for blocking is `declarativeNetRequest`. Non-blocking (observational) webRequest remains fully available in MV3. `"webRequestAuthProvider"` is required for `onAuthRequired`.
 - **Key events** (lifecycle order): `onBeforeRequest`, `onBeforeSendHeaders`, `onSendHeaders`, `onHeadersReceived`, `onAuthRequired`, `onBeforeRedirect`, `onResponseStarted`, `onCompleted`, `onErrorOccurred`.
@@ -39,7 +39,7 @@ chrome.webRequest.onCompleted.addListener(
 );
 ```
 
-## chrome.declarativeContent
+## [chrome.declarativeContent](https://developer.chrome.com/docs/extensions/reference/api/declarativeContent)
 - **Purpose:** enable the toolbar action based on a page's URL or matching CSS selector, without host permissions or injecting a content script.
 - **Permission:** `"declarativeContent"`.
 - **Rules:** `{ conditions, actions }`. Condition `PageStateMatcher` matches `pageUrl` (a UrlFilter), `css` (selectors), and `isBookmarked` (requires `"bookmarks"`). Actions: `ShowAction` (Chrome 97+), `SetIcon`, `RequestContentScript`.
@@ -54,7 +54,7 @@ chrome.declarativeContent.onPageChanged.addRules([{
 }]);
 ```
 
-## chrome.proxy
+## [chrome.proxy](https://developer.chrome.com/docs/extensions/reference/api/proxy)
 - **Permission:** `"proxy"`. `chrome.proxy.settings` is a `ChromeSetting` exposing `get()`, `set()`, `clear()`. `ProxyConfig.mode`: `"direct"`, `"auto_detect"`, `"pac_script"`, `"fixed_servers"`, `"system"`. `ProxyServer` has `host` (required), `scheme` (`http`, `https`, `quic`, `socks4`, `socks5`; default `http`), `port`. **Event:** `onProxyError`.
 
 ```js
@@ -64,7 +64,7 @@ chrome.proxy.settings.set({
 }, () => {});
 ```
 
-## chrome.cookies
+## [chrome.cookies](https://developer.chrome.com/docs/extensions/reference/api/cookies)
 - **Purpose:** query, modify, and monitor HTTP cookies across cookie stores.
 - **Permission:** `"cookies"` plus `host_permissions` for each domain accessed.
 - **Key methods** (Promises, Chrome 88+): `get(details)` resolves to a `Cookie` or `undefined`; `getAll(details)` resolves to `Cookie[]`; `set(details)`; `remove(details)`; `getAllCookieStores()`.
@@ -77,7 +77,7 @@ await chrome.cookies.set({
 });
 ```
 
-## chrome.dns
+## [chrome.dns](https://developer.chrome.com/docs/extensions/reference/api/dns)
 - **Availability:** Dev channel only. **Permission:** `"dns"`. **Method:** `resolve(hostname)` resolves to `ResolveCallbackResolveInfo` (`resultCode` — zero means success; `address?`). Omit the scheme and trailing slash from the hostname.
 
 ```js

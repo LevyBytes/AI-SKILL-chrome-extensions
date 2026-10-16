@@ -1,14 +1,14 @@
 # Tabs, Tab Groups & Windows
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
-These APIs manage the browser's tab, tab-group, and window surfaces from a service worker or extension page (not content scripts). All methods are Promise-based in MV3; most tab/window operations need no permission, but reading sensitive metadata does.
+These APIs manage the browser's tab, tab-group, and window surfaces from a service worker or extension page (not content scripts). Asynchronous methods support Promises in MV3; connect() returns a Port synchronously; most tab/window operations need no permission, but reading sensitive metadata does.
 
-## chrome.tabs
+## [chrome.tabs](https://developer.chrome.com/docs/extensions/reference/api/tabs)
 - **Purpose:** create, query, move, update, group, and message tabs; capture screenshots, detect language, and control zoom.
-- **Permission:** mostly none (creating, reloading, navigating tabs needs no permission). The `"tabs"` permission unlocks the sensitive properties `url`, `pendingUrl`, `title`, `favIconUrl`. `"activeTab"` grants a temporary host grant on user invocation. Host permissions (e.g. `"https://*/*"`) are needed for `captureVisibleTab()` and for querying by `url`.
-- **Key methods** (all return Promises):
+- **Permission:** mostly none (creating, reloading, navigating tabs needs no permission). The `"tabs"` permission unlocks the sensitive properties `url`, `pendingUrl`, `title`, `favIconUrl`. `"activeTab"` grants a temporary host grant on user invocation. `captureVisibleTab()` requires `<all_urls>` or an active `activeTab` grant; narrower host access alone is insufficient. URL filtering needs `"tabs"` or matching host permissions.
+- **Key methods** (asynchronous calls return Promises; connect returns a Port):
   - `query(queryInfo)` — match by `active`, `currentWindow`, `lastFocusedWindow`, `url`, `pinned`, `groupId`, `windowId`, `status`, etc.
   - `create(createProperties)` — `url`, `active`, `index`, `windowId`, `pinned`, `openerTabId`.
   - `update(tabId?, updateProperties)` — `url`, `active`, `highlighted`, `pinned`, `muted`, `openerTabId`, `autoDiscardable`.
@@ -18,7 +18,7 @@ These APIs manage the browser's tab, tab-group, and window surfaces from a servi
   - `highlight(highlightInfo)`, `discard(tabId?)`, `goBack(tabId?)`, `goForward(tabId?)`, `detectLanguage(tabId?)`, `captureVisibleTab(windowId?, options?)`, `connect(tabId, connectInfo?)`, `getZoom`/`setZoom`/`getZoomSettings`/`setZoomSettings`.
 - **Key events:** `onCreated`, `onUpdated`, `onActivated`, `onRemoved`, `onMoved`, `onAttached`, `onDetached`, `onHighlighted`, `onReplaced`, `onZoomChange`.
 - **Key types:** `Tab` (`id`, `windowId`, `index`, `url`, `title`, `favIconUrl`, `status`, `active`, `highlighted`, `pinned`, `incognito`, `mutedInfo`, `audible`, `discarded`, `autoDiscardable`, `groupId`, `openerTabId`, `pendingUrl`, `sessionId`, `width`, `height`, `frozen`, `lastAccessed`). `MutedInfo` (`muted`, `reason` = `"user"`/`"capture"`/`"extension"`, `extensionId`). Enums: `TabStatus` = `"unloaded"`/`"loading"`/`"complete"`; `ZoomSettingsMode` = `"automatic"`/`"manual"`/`"disabled"`; `ZoomSettingsScope` = `"per-origin"`/`"per-tab"`.
-- **MV3 notes:** callable from the service worker and extension pages, never content scripts. Promise-only (no callbacks). Operations may fail while the user drags a tab; retry with backoff.
+- **MV3 notes:** callable from the service worker and extension pages, never content scripts. Callback forms remain supported for chrome.* where documented. Operations may fail while the user drags a tab; retry with backoff.
 
 ```js
 // Query the active tab, then message its content script.
@@ -27,22 +27,22 @@ const reply = await chrome.tabs.sendMessage(tab.id, { action: "GET_INFO" });
 console.log(reply);
 ```
 
-## chrome.tabGroups
+## [chrome.tabGroups](https://developer.chrome.com/docs/extensions/reference/api/tabGroups)
 - **Purpose:** inspect, recolor, rename, collapse, and reposition tab groups. Adding/removing tabs is done via `chrome.tabs.group`/`ungroup`. Chrome 89+.
 - **Permission:** `"tabGroups"`.
 - **Key methods** (Promises): `get(groupId)`, `query(queryInfo)`, `move(groupId, moveProperties)`, `update(groupId, updateProperties)`. `MoveProperties`: `index` (use `-1` for end), `windowId`. `UpdateProperties`: `collapsed`, `color`, `title`.
 - **Key events:** `onCreated`, `onMoved`, `onRemoved`, `onUpdated`.
 - **Key types:** `TabGroup` (`id`, `windowId`, `collapsed`, `color`, `title`, `shared`). `Color` enum: `"grey"`, `"blue"`, `"red"`, `"yellow"`, `"green"`, `"pink"`, `"purple"`, `"cyan"`, `"orange"`. Constant `TAB_GROUP_ID_NONE` = `-1`.
-- **MV3 notes:** requires `"tabs"` alongside `"tabGroups"` to also act on member tabs.
+- **MV3 notes:** `"tabGroups"` permits group metadata operations; ordinary member-tab operations do not inherently require `"tabs"`. That permission or matching host access is needed for protected tab metadata.
 
 ```js
 const groupId = await chrome.tabs.group({ tabIds: [tabA, tabB] });
 await chrome.tabGroups.update(groupId, { title: "Research", color: "blue" });
 ```
 
-## chrome.windows
+## [chrome.windows](https://developer.chrome.com/docs/extensions/reference/api/windows)
 - **Purpose:** create, query, focus, resize, and close browser windows.
-- **Permission:** none for basic operations; `"tabs"` is required to read `url`, `pendingUrl`, `title`, or `favIconUrl` on contained `Tab` objects.
+- **Permission:** none for basic operations; `"tabs"` or matching host access is needed to read protected `url`, `pendingUrl`, `title`, or `favIconUrl` properties on contained Tab objects.
 - **Key methods** (Promises, Chrome 88+): `get(windowId, queryOptions?)`, `getCurrent(queryOptions?)`, `getLastFocused(queryOptions?)`, `getAll(queryOptions?)`, `create(createData?)`, `update(windowId, updateInfo)`, `remove(windowId)`. `QueryOptions`: `populate`, `windowTypes` (default `['normal', 'popup']`). `CreateData`: `url`, `tabId`, `left`, `top`, `width`, `height`, `focused`, `incognito`, `type`, `state`, `setSelfAsOpener` (Chrome 64+). `UpdateInfo`: `left`, `top`, `width`, `height`, `focused`, `drawAttention`, `state`.
 - **Key events:** `onCreated`, `onRemoved`, `onFocusChanged`, `onBoundsChanged` (Chrome 86+).
 - **Key types:** `Window` (`id`, `focused`, `alwaysOnTop`, `incognito`, `type`, `state`, `width`, `height`, `left`, `top`, `tabs`, `sessionId`). Enums: `WindowType` = `"normal"`/`"popup"`/`"panel"`/`"app"`/`"devtools"`; `WindowState` = `"normal"`/`"minimized"`/`"maximized"`/`"fullscreen"`; `CreateType` = `"normal"`/`"popup"`/`"panel"`. Constants `WINDOW_ID_CURRENT` = `-2`, `WINDOW_ID_NONE` = `-1`.

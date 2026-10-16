@@ -1,29 +1,32 @@
 # Message Passing
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 Extensions pass messages between content scripts and the service worker, between extensions, and between web pages and extensions, using one-time requests, long-lived ports, and native messaging.
 
 ## One-time requests
-Use `chrome.runtime.sendMessage` to message the extension from a content script (or vice versa), and `chrome.tabs.sendMessage` to message a content script. Both return Promises resolving to the recipient's response. Receive with `chrome.runtime.onMessage`; the listener gets `(message, sender, sendResponse)`.
+Use `chrome.runtime.sendMessage` to message the extension from a content script, and `chrome.tabs.sendMessage` to message a content script. Both return Promises resolving to the recipient's response. Receive with `chrome.runtime.onMessage`; the listener gets `(message, sender, sendResponse)`.
 
 ```js
 const response = await chrome.runtime.sendMessage({ greeting: "hello" });
 ```
 
-### Returning true to keep the channel open (gotcha)
+### Responding asynchronously
 `sendResponse` is synchronous by default — once the listener returns, the channel closes. To respond asynchronously, **return `true`** from the listener so Chrome keeps the channel open until `sendResponse` runs. Forgetting this is a common bug: the response never arrives.
 
 ```js
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message !== "get-status") return;
-  fetch("https://example.com").then((r) => sendResponse({ statusCode: r.status }));
+  fetch("https://example.com").then(
+    (r) => sendResponse({ statusCode: r.status }),
+    (error) => sendResponse({ error: error.message })
+  );
   return true; // keep the channel open for the async sendResponse
 });
 ```
 
-Alternatives: an `async` listener (always returns a Promise), or returning a Promise (Chrome 148+). Messages are JSON-serialized (`undefined` becomes `null`); maximum message size is 64 MiB.
+Promise-returning listeners begin with a gradual Chrome 148 rollout and are not enabled in extension contexts when a devtools_page is declared. Use return true plus sendResponse for compatibility; an async listener always returns a Promise, even for messages it does not handle. Messages are JSON-serialized (`undefined` becomes `null`); maximum message size is 64 MiB.
 
 ## Long-lived connections (ports)
 `chrome.runtime.connect` (from a content script) or `chrome.tabs.connect` (from the extension) opens a `Port`; `chrome.runtime.onConnect` accepts it. A `Port` provides `postMessage`, `onMessage`, `onDisconnect`, and `disconnect`. Pass a `name` to distinguish channels.
@@ -32,7 +35,10 @@ Alternatives: an `async` listener (always returns a Promise), or returning a Pro
 const port = chrome.runtime.connect({ name: "knockknock" });
 port.onMessage.addListener((msg) => { if (msg.question) port.postMessage({ answer: "Madame" }); });
 port.postMessage({ joke: "Knock knock" });
-// service worker
+```
+
+```js
+// Separate service-worker.js: register this listener at startup.
 chrome.runtime.onConnect.addListener((port) => {
   if (port.name !== "knockknock") return;
   port.onMessage.addListener((msg) => { if (msg.joke) port.postMessage({ question: "Who's there?" }); });
@@ -64,7 +70,7 @@ port.postMessage({ text: "Hello, my_application" });
 ```
 
 ### Native host manifest
-The native app ships a JSON manifest: `name` (lowercase alphanumerics, underscores, dots; no leading/trailing dot), `description`, `path` (host binary), `type` must be `"stdio"`, and `allowed_origins` (extension IDs allowed to connect; no wildcards).
+The native app ships a JSON manifest: `name` (lowercase alphanumerics, underscores, dots; no leading/trailing dot or consecutive dots), `description`, `path` (host binary), `type` must be `"stdio"`, and `allowed_origins` (extension IDs allowed to connect; no wildcards).
 
 ```json
 {

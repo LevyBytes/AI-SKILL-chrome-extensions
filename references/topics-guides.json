@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "topics": [
+    {
+      "topic": "UI & DevTools How-Tos",
+      "file": "references/howto-ui-and-devtools.md",
+      "summary": "Open when implementing accessible extension UI, favicons, localized formats, notifications, or DevTools interfaces.",
+      "keywords": ["a11y", "favicon", "localization", "notifications", "devtools_page"]},
+    {
+      "topic": "Web Platform How-Tos",
+      "file": "references/howto-web-platform.md",
+      "summary": "Open when using geolocation, screen capture, WebSockets, WebHID, WebUSB, or origin trials in extension contexts.",
+      "keywords": ["geolocation", "screen capture", "WebSocket", "WebHID", "WebUSB", "origin trials"]},
+    {
+      "topic": "Integrate & Distribute",
+      "file": "references/howto-integrate-distribute.md",
+      "summary": "Open when integrating OAuth or analytics, packaging or self-hosting an extension, or loading it unpacked.",
+      "keywords": ["oauth", "getAuthToken", "google analytics", "distribute", "load unpacked"]},
+    {
+      "topic": "Test & Debug",
+      "file": "references/howto-test-debug.md",
+      "summary": "Open when testing or debugging service workers, popups, or content scripts with browser tools and test frameworks.",
+      "keywords": ["debug", "inspect", "jest", "puppeteer", "selenium", "service worker"]},
+    {
+      "topic": "Reference Language Selection",
+      "file": "references/languages.md",
+      "summary": "Open when you need a language version of this skill's references other than English.",
+      "keywords": ["reference language", "translated references", "language selection"]}
+  ]
+}

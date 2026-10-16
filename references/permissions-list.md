@@ -1,13 +1,13 @@
 # Permissions List
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim. Each value is shown in backticks so an agent can confirm a string exists and is spelled correctly.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract. Each value is shown in backticks so an agent can confirm a string exists and is spelled correctly.
 
 ## Overview
-The named permission strings usable in the `permissions` (and `optional_permissions`) manifest arrays, grouped by area. These are the exact strings; host access is declared separately.
+Named permission strings grouped by area. Not every permission is eligible for optional_permissions; check the restrictions in [Downloads, management and permissions](api-downloads-management-permissions.md). These are the exact strings; host access is declared separately.
 
 ## Named permissions vs host permissions
 - **Named permissions** (this page) are fixed strings in `permissions` / `optional_permissions`; each unlocks a specific `chrome.*` API or capability.
-- **Host permissions** are URL match patterns in `host_permissions` / `optional_host_permissions` — not on this list. The wildcard token `<all_urls>` matches every URL the extension can access and is a host match pattern, not a named permission. <!-- allow-placeholder -->
+- **Host permissions** are URL match patterns in `host_permissions` / `optional_host_permissions` — not on this list. The wildcard token `<all_urls>` matches every URL the extension can access and is a host match pattern, not a named permission.
 - Some strings still pair with host access (e.g. `declarativeNetRequestWithHostAccess` only acts on granted hosts).
 - Many permissions trigger a user-facing install warning (typically those reading browsing data, websites, or device state); many API-only permissions (e.g. `alarms`, `storage`) show none. Consult the official permissions-list page for the exact warning text.
 

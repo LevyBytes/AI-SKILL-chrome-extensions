@@ -1,11 +1,11 @@
 # Enterprise & ChromeOS
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
-These APIs are ChromeOS-only. The `chrome.enterprise.*` namespaces additionally require the extension to be force-installed by enterprise policy (and most require the user to be affiliated). Promise call styles arrived in Chrome 96+; callbacks remain as migration context.
+Most APIs here are ChromeOS-only; enterprise.hardwarePlatform is also available on other managed desktop platforms. The `chrome.enterprise.*` namespaces additionally require the extension to be force-installed by enterprise policy (and most require the user to be affiliated). Promise call styles arrived in Chrome 96+; chrome.* callbacks remain supported where documented.
 
-## chrome.enterprise.deviceAttributes
+## [chrome.enterprise.deviceAttributes](https://developer.chrome.com/docs/extensions/reference/api/enterprise/deviceAttributes)
 - **Permission:** `"enterprise.deviceAttributes"`. ChromeOS, policy-installed only. Returns an empty string when unaffiliated or unset.
 - **Key methods:** `getDeviceAnnotatedLocation()`, `getDeviceAssetId()`, `getDeviceHostname()` (from the `DeviceHostnameTemplate` policy), `getDeviceSerialNumber()`, `getDirectoryDeviceId()` — each resolves to a string.
 
@@ -13,35 +13,35 @@ These APIs are ChromeOS-only. The `chrome.enterprise.*` namespaces additionally 
 const serial = await chrome.enterprise.deviceAttributes.getDeviceSerialNumber();
 ```
 
-## chrome.enterprise.hardwarePlatform
+## [chrome.enterprise.hardwarePlatform](https://developer.chrome.com/docs/extensions/reference/api/enterprise/hardwarePlatform)
 - **Permission:** `"enterprise.hardwarePlatform"`. Requires the `EnterpriseHardwarePlatformAPIEnabled` policy.
 - **Key methods:** `getHardwarePlatformInfo()` resolves to a `HardwarePlatformInfo` (`manufacturer`, `model`).
 
-## chrome.enterprise.login
+## [chrome.enterprise.login](https://developer.chrome.com/docs/extensions/reference/api/enterprise/login)
 - **Permission:** `"enterprise.login"`. Usable only within ChromeOS Managed Guest sessions.
 - **Key methods:** `exitCurrentManagedGuestSession()` (Chrome 139+) ends the active Managed Guest session.
 
-## chrome.enterprise.networkingAttributes
-- **Permission:** `"enterprise.networkingAttributes"`. If unaffiliated or offline, `runtime.lastError` is set.
+## [chrome.enterprise.networkingAttributes](https://developer.chrome.com/docs/extensions/reference/api/enterprise/networkingAttributes)
+- **Permission:** `"enterprise.networkingAttributes"`. If unaffiliated or offline, Promise calls reject; callback calls report runtime.lastError.
 - **Key methods:** `getNetworkDetails()` resolves to a `NetworkDetails` (`ipv4?`, `ipv6?`, `macAddress`).
 
 ```js
 try {
   const d = await chrome.enterprise.networkingAttributes.getNetworkDetails();
-} catch { console.warn(chrome.runtime.lastError?.message); }
+} catch (error) { console.warn(error.message); }
 ```
 
-## chrome.enterprise.platformKeys
+## [chrome.enterprise.platformKeys](https://developer.chrome.com/docs/extensions/reference/api/enterprise/platformKeys)
 - **Permission:** `"enterprise.platformKeys"`.
 - **Key methods:** `getTokens()` resolves to `Token[]`; `getCertificates(tokenId)`; `importCertificate(tokenId, certificate)`; `removeCertificate(tokenId, certificate)`; `challengeKey(options)` (Chrome 110+). Deprecated since Chrome 110: `challengeMachineKey(challenge, registerKey?)`, `challengeUserKey(challenge, registerKey)`.
 - **Key types/enums:** `Token` (`id`, `subtleCrypto`, `softwareBackedSubtleCrypto` (Chrome 97+)); `ChallengeKeyOptions` (`challenge`, `scope`, `registerKey?`); `Algorithm` (`"RSA"`, `"ECDSA"`); `Scope` (`"USER"`, `"MACHINE"`).
 - **MV3 notes:** use `challengeKey` in new code.
 
-## chrome.fileBrowserHandler
+## [chrome.fileBrowserHandler](https://developer.chrome.com/docs/extensions/reference/api/fileBrowserHandler)
 - **Permission:** `"fileBrowserHandler"`. Foreground only (register the listener from a page). Declared with the `"file_browser_handlers"` manifest key (per-entry `id`, `default_title`, `file_filters` such as `"filesystem:*.jpg"`).
 - **Key events:** `onExecute` → `(id, details)` where `details` is a `FileHandlerExecuteEventDetails` (`entries`, `tab_id?`).
 
-## chrome.fileSystemProvider
+## [chrome.fileSystemProvider](https://developer.chrome.com/docs/extensions/reference/api/fileSystemProvider)
 - **Permission:** `"fileSystemProvider"`. Declared with `"file_system_provider_capabilities"` (`configurable`, `multiple_mounts`, `watchable` defaults `false`; `source` is `"file"`/`"device"`/`"network"`).
 - **Key methods:** `mount(options)`, `unmount(options)`, `get(fileSystemId)`, `getAll()`, `notify(options)` (Chrome 45+).
 - **Key events:** request events firing in the worker, each with `successCallback`/`errorCallback`: `onMountRequested`, `onUnmountRequested`, `onGetMetadataRequested`, `onReadDirectoryRequested`, `onOpenFileRequested`, `onCloseFileRequested`, `onReadFileRequested`, `onCreateFileRequested`, `onCreateDirectoryRequested`, `onDeleteEntryRequested`, `onCopyEntryRequested`, `onMoveEntryRequested`, `onTruncateRequested`, `onWriteFileRequested`, `onAbortRequested`, `onConfigureRequested`, `onAddWatcherRequested`, `onRemoveWatcherRequested`, `onGetActionsRequested`, `onExecuteActionRequested`.
@@ -54,7 +54,7 @@ chrome.fileSystemProvider.onReadDirectoryRequested.addListener((options, onSucce
 await chrome.fileSystemProvider.mount({ fileSystemId: "demo-fs", displayName: "Demo Drive" });
 ```
 
-## chrome.input.ime
+## [chrome.input.ime](https://developer.chrome.com/docs/extensions/reference/api/input/ime)
 - **Permission:** `"input"`. Declared with the `"input_components"` manifest key.
 - **Key methods:** `clearComposition`, `commitText`, `deleteSurroundingText`, `hideInputView`, `keyEventHandled(requestId, response)`, `sendKeyEvents`, `setCandidates`, `setCandidateWindowProperties`, `setComposition`, `setCursorPosition`, `setMenuItems`, `updateMenuItems`, `setAssistiveWindowProperties` (Chrome 85+), `setAssistiveWindowButtonHighlighted` (Chrome 86+).
 - **Key events:** `onActivate`, `onDeactivated`, `onFocus` → `(context)`, `onBlur` → `(contextID)`, `onKeyEvent` → `(engineID, keyData, requestId)` (return a boolean to consume, or call `keyEventHandled` later), `onCandidateClicked`, `onMenuItemActivated`, `onReset`, `onSurroundingTextChanged`, `onInputContextUpdate`.
@@ -72,14 +72,14 @@ chrome.input.ime.onKeyEvent.addListener((engineID, keyData, requestId) => {
 });
 ```
 
-## chrome.wallpaper
+## [chrome.wallpaper](https://developer.chrome.com/docs/extensions/reference/api/wallpaper)
 - **Permission:** `"wallpaper"`. **Method:** `setWallpaper(details)` where `details` has `url?` or `data?` (JPEG/PNG), `layout` (`WallpaperLayout`: `"STRETCH"`, `"CENTER"`, `"CENTER_CROPPED"`), `filename`, `thumbnail?` (generates a 128x60 thumbnail). Provide exactly one of `url`/`data`.
 
 ```js
 await chrome.wallpaper.setWallpaper({ url: "https://example.com/bg.jpg", layout: "CENTER_CROPPED", filename: "bg" });
 ```
 
-## chrome.vpnProvider
+## [chrome.vpnProvider](https://developer.chrome.com/docs/extensions/reference/api/vpnProvider)
 - **Permission:** `"vpnProvider"`.
 - **Key methods:** `createConfig(name)` resolves to a config `id`; `destroyConfig(id)`; `notifyConnectionStateChanged(state)`; `sendPacket(data)`; `setParameters(parameters)`.
 - **Key events:** `onConfigCreated`, `onConfigRemoved`, `onPacketReceived` → `(data)`, `onPlatformMessage` → `(id, message, error)`, `onUIEvent`.

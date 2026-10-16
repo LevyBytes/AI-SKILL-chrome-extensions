@@ -1,50 +1,53 @@
-# Chrome Extensions (Manifest V3) Skill
+# Chrome Extensions
 
-> _Faithful, task-routed reference for building, scaffolding, and debugging Manifest V3 Chrome, Chromium, and Edge browser extensions._
-
-Part of **[Agent Kaizen](https://github.com/DirectorGunner/agent-kaizen)** — Agent Kaizen is designed to support reliable AI agent workflows, context engineering, and AI systems engineering in VS Code, Codex, and Claude Code. Build reusable agent skills, reduce unnecessary context loading, add validation loops, and apply Spec → Verifier → Environment scaffolding to new and existing projects.
-
-This repository is the `chrome-extensions` skill: a reusable, trigger-rich task handbook that an AI coding agent (OpenAI Codex, Claude Code) loads on demand when a task matches its triggers.
-
-## What this skill covers
-
-This skill covers Manifest V3 extension development end to end: the `manifest.json` format (`manifest_version`, action/background, content_scripts, permissions, `host_permissions`, side_panel, CSP keys), background **service workers**, content scripts, popups, options pages, side panels, omnibox, and context menus. It routes the full surface of `chrome.*` / `browser.*` APIs — `action`, `tabs`, `scripting`, `storage`, `runtime`, `alarms`, `permissions`, `declarativeNetRequest`, `webRequest`, `identity`, `sidePanel`, `commands`, `cookies`, `notifications`, and `devtools` — plus message passing, native messaging, and loading unpacked extensions. It also handles MV2-to-MV3 migration, treating Manifest V2 only as labeled migration context. It is not for Firefox/Safari-specific WebExtension behavior, ordinary web-page automation, or Chrome Web Store listing and publishing beyond manifest keys.
-
-## What's inside
-
-- `SKILL.md` — frontmatter (`name` + trigger-rich `description`) and a lean body.
-- `references/` — right-sized topic files the agent loads only when relevant (plus `INDEX.md` and `topics.json`).
-- `GOTCHA.md` — known pitfalls and edge cases, such as the event-driven service worker that terminates when idle, requiring state to persist to `chrome.storage` with listeners registered at the top level.
-
-## Use it
-
-This skill is one git repo inside the Agent Kaizen **skills store**. The store nests two folders on purpose: the outer **`SKILLS\`** is a VS Code project for building and maintaining skills (its own workspace + tooling), and the inner lowercase **`skills\`** holds every skill as its own repo. That split lets a project pull skills two ways — the **whole `skills\` folder at once** (loads everything — **not recommended**) or **one skill at a time** (recommended: load only what a task needs and stay under Claude Code's skill-listing budget).
-
-Paths below use **`%DEVROOT%`** — the `DEVROOT` environment variable pointing at the folder that contains `SKILLS\`. Set it once by running **`SetDevRoot.cmd`** in the SKILLS repo root (no admin); a new shell then resolves `%DEVROOT%` automatically.
-
-Link **just this skill** (recommended) — a Windows directory junction, no admin:
-
-```cmd
-mklink /J .agents\skills\chrome-extensions  "%DEVROOT%\SKILLS\skills\chrome-extensions"
-mklink /J .claude\skills\chrome-extensions  "%DEVROOT%\SKILLS\skills\chrome-extensions"
+```mermaid
+---
+config:
+  flowchart:
+    wrappingWidth: 400
+---
+flowchart LR
+    brand["KAIZEN<br/>SKILL LIBRARY"]:::brand
+    skill("Chrome Extensions"):::skill
+    first(["Manifest V3"]):::topic
+    second(["Messaging + APIs"]):::topic
+    third(["Permissions + Testing"]):::accent
+    brand --- skill
+    skill --- first
+    skill --- second
+    skill --- third
+    classDef brand fill:#0f172a,color:#67e8f9,stroke:#22d3ee,stroke-width:2px,font-family:monospace
+    classDef skill fill:#172554,color:#eff6ff,stroke:#60a5fa,stroke-width:2px,font-size:20px
+    classDef topic fill:#0c4a6e,color:#bae6fd,stroke:#38bdf8,stroke-width:1px
+    classDef accent fill:#1e293b,color:#fcd34d,stroke:#f59e0b,stroke-width:1px
+    linkStyle default stroke:#38bdf8,stroke-width:1px
 ```
 
-Or link the **whole store** at once (loads every skill — not recommended outside a skills-dev project):
+Manifest V3 development references for Chrome-family browser extensions. The package connects manifest declarations, service workers, content scripts and extension APIs so an agent can reason about architecture, permissions and lifecycle behavior while implementing a feature.
 
-```cmd
-mklink /J .agents\skills  "%DEVROOT%\SKILLS\skills"
-mklink /J .claude\skills  "%DEVROOT%\SKILLS\skills"
-```
+Use when building, scaffolding, or debugging Chrome, Chromium, or Edge Manifest V3 browser extensions: service workers, content scripts, popups, options pages, side panels, omnibox, context menus, message passing, permissions, host_permissions, native messaging, loading unpacked extensions, MV2-to-MV3 migration, manifest.json with manifest_version 3, or chrome.* / browser.* APIs such as action, tabs, scripting, storage, runtime, alarms, permissions, declarativeNetRequest, webRequest, identity, sidePanel, commands, cookies, notifications, and devtools. Do not use for Firefox/Safari-specific WebExtension behavior, ordinary web-page automation, or Chrome Web Store listing/review/publishing beyond manifest keys.
 
-Remove a link (the store copy is untouched):
+## What this skill helps with
 
-```cmd
-rmdir .agents\skills\chrome-extensions
-rmdir .claude\skills\chrome-extensions
-```
+| Task | Useful reference material |
+| --- | --- |
+| [Design the extension architecture](references/concepts-architecture.md) | Choose extension components and understand how they communicate. |
+| [Handle background and page work](references/concepts-service-workers.md) | Account for service-worker lifecycle limits and follow the related content-script and state guidance. |
+| [Pass messages across contexts](references/concepts-messaging.md) | Use one-time messages, ports and native-host communication with their documented contracts. |
+| [Check permissions and behavior](references/concepts-permissions.md) | Select permissions and match patterns, then use the testing references to inspect the result. |
 
-The agent (OpenAI Codex, Claude Code) then auto-loads this skill whenever a task matches its triggers. Built and validated with **[skill-drafting](https://github.com/DirectorGunner/AI-skill-drafting)** to the Agent Kaizen gold standard.
+## The work behind the references
 
-## License
+Concepts, manifest keys and API families have separate references and focused catalogs. This organization keeps exact permission names, execution contexts and lifecycle conditions close to the examples that depend on them.
 
-Licensed under **AGPL-3.0**, matching the [Agent Kaizen](https://github.com/DirectorGunner/agent-kaizen) project.
+## Start here
+
+Start with [SKILL.md](SKILL.md) and follow its context routes.
+
+Match the browser, version and platform requirements of the selected API; ChromeOS and enterprise APIs have narrower availability. Start testing with [Test and Debug](references/howto-test-debug.md). This package is centered on Manifest V3.
+
+## Sources and license
+
+Skill reference documentation is interpreted content for use in open source projects. Check against [official documentation sources](https://developer.chrome.com/docs/extensions) when dealing with defects or issues that may come up from interpreting this skill's references.
+
+Licensed under **AGPL-3.0**; see [LICENSE](LICENSE). Part of the [Agent Kaizen](https://github.com/LevyBytes/agent-kaizen) skill library.

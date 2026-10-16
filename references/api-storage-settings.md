@@ -1,11 +1,11 @@
 # Storage & Browser Settings
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
-Persist extension data (`chrome.storage`) and read or override per-site and browser-wide preferences for content permissions, privacy features, fonts, and stored browsing data. All methods return a Promise in MV3.
+Persist extension data (`chrome.storage`) and read or override per-site and browser-wide preferences for content permissions, privacy features, fonts, and stored browsing data. Asynchronous methods support Promises in MV3; verify the selected method and minimum Chrome version.
 
-## chrome.storage
+## [chrome.storage](https://developer.chrome.com/docs/extensions/reference/api/storage)
 - **Purpose:** persist key-value data, usable from every extension context including service workers and content scripts.
 - **Permission:** `"storage"` (add `"unlimitedStorage"` to lift the `local` quota).
 - **Areas:** `local` (cleared on uninstall), `sync` (synced across signed-in browsers; behaves like `local` when sync is off), `session` (in-memory; cleared on reload/restart; Chrome 102+), `managed` (read-only enterprise policy).
@@ -16,16 +16,17 @@ Persist extension data (`chrome.storage`) and read or override per-site and brow
 - **MV3 notes:** service workers have full access; prefer `session` for worker state. `session` is hidden from content scripts unless you call `setAccessLevel({ level: "TRUSTED_AND_UNTRUSTED_CONTEXTS" })`.
 
 ```js
-await chrome.storage.local.set({ counter: 1 });
-const { counter } = await chrome.storage.local.get(["counter"]);
 chrome.storage.onChanged.addListener((changes, areaName) => {
   for (const [key, { oldValue, newValue }] of Object.entries(changes)) {
     console.log(areaName, key, oldValue, newValue);
   }
 });
+// Invoke these calls from an async handler after listeners are registered.
+await chrome.storage.local.set({ counter: 1 });
+const { counter } = await chrome.storage.local.get(["counter"]);
 ```
 
-## chrome.contentSettings
+## [chrome.contentSettings](https://developer.chrome.com/docs/extensions/reference/api/contentSettings)
 - **Permission:** `"contentSettings"`.
 - **Key methods** (per `ContentSetting`, return a Promise): `get(details)` (`primaryUrl` required), `set(details)` (`primaryPattern` + `setting` required), `clear(details)`, `getResourceIdentifiers()`.
 - **Setting types:** `cookies`, `images`, `javascript`, `location`, `popups`, `notifications`, `camera`, `microphone`, `automaticDownloads`, `clipboard`, `autoVerify`; deprecated `fullscreen`/`mouselock` (always `allow`), `plugins`/`unsandboxedPlugins` (always `block`).
@@ -37,18 +38,18 @@ await chrome.contentSettings.javascript.set({
 });
 ```
 
-## chrome.privacy
+## [chrome.privacy](https://developer.chrome.com/docs/extensions/reference/api/privacy)
 - **Permission:** `"privacy"`.
 - **Property groups (each a `ChromeSetting`):** `privacy.network` (`networkPredictionEnabled`, `webRTCIPHandlingPolicy`); `privacy.services` (`safeBrowsingEnabled`, `autofillAddressEnabled`, `autofillCreditCardEnabled`, `passwordSavingEnabled`, `searchSuggestEnabled`); `privacy.websites` (`thirdPartyCookiesAllowed`, `hyperlinkAuditingEnabled`, `referrersEnabled`, `doNotTrackEnabled`, `protectedContentEnabled`, `adMeasurementEnabled`, `fledgeEnabled`, `topicsEnabled`, `relatedWebsiteSetsEnabled`).
 - **`ChromeSetting`:** `get(details)`, `set(details)`, `clear(details)`, event `onChange`.
 - **Enums:** `IPHandlingPolicy` = `"default"`, `"default_public_and_private_interfaces"`, `"default_public_interface_only"`, `"disable_non_proxied_udp"`.
-- **MV3 gotchas:** `adMeasurementEnabled`, `fledgeEnabled`, `topicsEnabled`, `relatedWebsiteSetsEnabled` may only be set to `false` (setting `true` throws). `thirdPartyCookiesAllowed` cannot be enabled in Incognito.
+- **MV3 constraints:** `adMeasurementEnabled`, `fledgeEnabled`, `topicsEnabled`, `relatedWebsiteSetsEnabled` may only be set to `false` (setting `true` throws). `thirdPartyCookiesAllowed` cannot be enabled in Incognito.
 
 ```js
 await chrome.privacy.services.safeBrowsingEnabled.set({ value: true });
 ```
 
-## chrome.fontSettings
+## [chrome.fontSettings](https://developer.chrome.com/docs/extensions/reference/api/fontSettings)
 - **Permission:** `"fontSettings"`.
 - **Key methods** (return a Promise, Chrome 96+): `getFont(details)`, `setFont(details)`, `clearFont(details)`, `getFontList()`; size trios `get/set/clearDefaultFontSize`, `…DefaultFixedFontSize`, `…MinimumFontSize`.
 - **Key types:** `GenericFamily` = `"standard"`, `"sansserif"`, `"serif"`, `"fixed"`, `"cursive"`, `"fantasy"`, `"math"`; `ScriptCode` (ISO 15924, `"Zyyy"` = global default).
@@ -58,7 +59,7 @@ await chrome.privacy.services.safeBrowsingEnabled.set({ value: true });
 await chrome.fontSettings.setFont({ genericFamily: "serif", script: "Latn", fontId: "Georgia" });
 ```
 
-## chrome.browsingData
+## [chrome.browsingData](https://developer.chrome.com/docs/extensions/reference/api/browsingData)
 - **Permission:** `"browsingData"`.
 - **Key methods** (return a Promise): `remove(options, dataToRemove)`, plus targeted `removeCache`, `removeCacheStorage`, `removeCookies`, `removeDownloads`, `removeFileSystems`, `removeFormData`, `removeHistory`, `removeIndexedDB`, `removeLocalStorage`, `removeServiceWorkers`, `removeWebSQL`, and `settings()`.
 - **Key types:** `RemovalOptions` `{ since?, originTypes?, origins?, excludeOrigins? }` (`since` is ms since epoch, default 0); `DataTypeSet` booleans include `cache`, `cacheStorage`, `cookies`, `downloads`, `fileSystems`, `formData`, `history`, `indexedDB`, `localStorage`, `passwords`, `serviceWorkers`, `webSQL`.

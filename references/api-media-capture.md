@@ -1,17 +1,17 @@
 # Media Capture & Speech
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 Capture tab/screen/window media streams, save pages as MHTML, manage ChromeOS audio devices, synthesize speech, and implement a speech engine: `chrome.tabCapture`, `chrome.desktopCapture`, `chrome.pageCapture`, `chrome.audio`, `chrome.tts`, `chrome.ttsEngine`.
 
-## chrome.tabCapture
+## [chrome.tabCapture](https://developer.chrome.com/docs/extensions/reference/api/tabCapture)
 - **Purpose:** capture the visible area of a tab as a media stream (audio and/or video).
 - **Permission:** `"tabCapture"`.
 - **Key methods:** `capture(options, callback)` → `(stream)` — foreground only (not the service worker), requires a prior user invocation of the extension (like `activeTab`); `getMediaStreamId(options)` resolves to a string id (Chrome 71+, service-worker friendly); `getCapturedTabs()` resolves to `CaptureInfo[]` (Chrome 116+).
 - **Key events:** `onStatusChanged` → `(info)`.
 - **Key types:** `CaptureOptions` (`audio?`, `audioConstraints?`, `video?`, `videoConstraints?`); `GetMediaStreamOptions` (`consumerTabId?`, `targetTabId?`); `CaptureInfo` (`tabId`, `status`, `fullscreen`); `TabCaptureState` (`"pending"`, `"active"`, `"stopped"`, `"error"`).
-- **MV3 notes:** the typical MV3 pattern is `getMediaStreamId()` in the worker, then consume the id with `navigator.mediaDevices.getUserMedia()` in an offscreen document.
+- **MV3 notes:** Chrome 116+ supports the MV3 pattern of `getMediaStreamId()` in the worker, then consume the id with `navigator.mediaDevices.getUserMedia()` in an offscreen document.
 
 ```js
 // In a service worker (after a user gesture invokes the extension):
@@ -20,7 +20,7 @@ const streamId = await chrome.tabCapture.getMediaStreamId({ targetTabId });
 // { mandatory: { chromeMediaSource: 'tab', chromeMediaSourceId: streamId } }.
 ```
 
-## chrome.desktopCapture
+## [chrome.desktopCapture](https://developer.chrome.com/docs/extensions/reference/api/desktopCapture)
 - **Purpose:** prompt the user to choose a screen, window, or tab, returning a stream id for `getUserMedia()`.
 - **Permission:** `"desktopCapture"`.
 - **Key methods:** `chooseDesktopMedia(sources, targetTab?, callback)` returns a number request id; the callback receives `(streamId, options)` where `options.canRequestAudioTrack` is a boolean; `cancelChooseDesktopMedia(desktopMediaRequestId)`.
@@ -34,7 +34,7 @@ chrome.desktopCapture.chooseDesktopMedia(["screen", "window", "tab", "audio"], (
 });
 ```
 
-## chrome.pageCapture
+## [chrome.pageCapture](https://developer.chrome.com/docs/extensions/reference/api/pageCapture)
 - **Purpose:** save a tab's content as MHTML (RFC 2557).
 - **Permission:** `"pageCapture"`.
 - **Key methods:** `saveAsMHTML(details)` where `details` is `{ tabId }`, resolves to a `Blob` (Chrome 116+).
@@ -44,7 +44,7 @@ chrome.desktopCapture.chooseDesktopMedia(["screen", "window", "tab", "audio"], (
 const mhtmlBlob = await chrome.pageCapture.saveAsMHTML({ tabId });
 ```
 
-## chrome.audio
+## [chrome.audio](https://developer.chrome.com/docs/extensions/reference/api/audio)
 - **Purpose:** query and control audio devices and mute/level state. ChromeOS only (Chrome 59+).
 - **Permission:** `"audio"`.
 - **Key methods:** `getDevices(filter)` resolves to `AudioDeviceInfo[]`; `getMute(streamType)` resolves to a boolean; `setMute(streamType, isMuted)`; `setActiveDevices(ids)`; `setProperties(id, properties)`.
@@ -55,7 +55,7 @@ const mhtmlBlob = await chrome.pageCapture.saveAsMHTML({ tabId });
 const devices = await chrome.audio.getDevices({ streamTypes: ["INPUT"] });
 ```
 
-## chrome.tts
+## [chrome.tts](https://developer.chrome.com/docs/extensions/reference/api/tts)
 - **Purpose:** play synthesized text-to-speech.
 - **Permission:** `"tts"`.
 - **Key methods:** `speak(utterance, options?)` (resolves immediately; use `options.onEvent` for progress); `stop()`; `pause()`; `resume()`; `isSpeaking()` resolves to a boolean; `getVoices()` resolves to `TtsVoice[]`.
@@ -67,7 +67,7 @@ const devices = await chrome.audio.getDevices({ streamTypes: ["INPUT"] });
 chrome.tts.speak("Hello, world.", { lang: "en-US", rate: 2.0 });
 ```
 
-## chrome.ttsEngine
+## [chrome.ttsEngine](https://developer.chrome.com/docs/extensions/reference/api/ttsEngine)
 - **Purpose:** implement a TTS engine other extensions/Chrome can use.
 - **Permission:** `"ttsEngine"`. Register voices via the `tts_engine` manifest key (`voices` entries with `voice_name`, `lang`, `event_types`).
 - **Key methods:** `updateVoices(voices)` (Chrome 66+); `updateLanguage(status)` (Chrome 132+).

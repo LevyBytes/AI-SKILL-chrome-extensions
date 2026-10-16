@@ -1,6 +1,6 @@
 # Manifest Capability Keys
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim. MV2-only forms are labeled migration context.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract. MV2-only forms are labeled migration context.
 
 ## Overview
 These keys wire up an extension's behavior: toolbar UI, background logic, injected scripts, permissions, security policy, and exposed surfaces.
@@ -29,7 +29,7 @@ Array of static injection entries; `matches` plus at least one of `js`/`css` req
 {
   "permissions": ["activeTab", "storage"],
   "optional_permissions": ["topSites"],
-  "host_permissions": ["https://www.developer.chrome.com/*"],
+  "host_permissions": ["https://developer.chrome.com/*"],
   "optional_host_permissions": ["https://*/*", "http://*/*"]
 }
 ```
@@ -63,7 +63,7 @@ Object with `rule_resources`, an array of `{ id, enabled, path }` pointing at st
 ```
 
 ## `commands`
-Maps a command name to `{ suggested_key, description, global }`. `suggested_key` is a string or object keyed by `default`/`mac`/`windows`/`chromeos`/`linux`. At most four suggested shortcuts; each must include `Ctrl` or `Alt`; `Ctrl+Alt` is disallowed; on macOS `Ctrl` maps to `Command` while `MacCtrl` targets Control; `global` (default `false`) is limited to `Ctrl+Shift+0..9` off ChromeOS. Reserved `_execute_action` triggers the action.
+Maps a command name to `{ suggested_key, description, global }`. `suggested_key` is a string or object keyed by `default`/`mac`/`windows`/`chromeos`/`linux`. At most four suggested shortcuts; ordinary shortcuts require Ctrl or Alt (media-key shortcuts are exceptions); `Ctrl+Alt` is disallowed; on macOS `Ctrl` maps to `Command` while `MacCtrl` targets Control; suggested global shortcuts are limited to Ctrl+Shift+0..9 off ChromeOS, while users may reassign them. Reserved `_execute_action` triggers the action.
 
 ## `omnibox`
 Object with `keyword` (address-bar keyword). Provide a 16x16 icon.

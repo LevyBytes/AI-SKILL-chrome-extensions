@@ -1,11 +1,13 @@
 # Extension Architecture & Getting Started
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 A Manifest V3 extension is a package of web files (HTML, CSS, JavaScript) plus a `manifest.json` that declares its components — a background service worker, content scripts, and UI surfaces — which run in separate contexts and talk to each other through the messaging APIs.
 
 ## The extension package
+Chrome 148+ also exposes browser.* as an alias of chrome.*; this guide preserves chrome.* for compatibility. Do not infer that MV3 removed callback forms: asynchronous call styles and minimum versions are method-specific.
+
 An extension is a directory built with the same web technologies as web apps (HTML, CSS, JavaScript), plus the Chrome Extension APIs (the `chrome.*` namespace). `manifest.json` is the only required file with a fixed name, and it must live in the extension's root directory.
 
 ## The manifest

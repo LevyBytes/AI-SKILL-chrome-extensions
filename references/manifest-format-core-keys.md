@@ -1,9 +1,9 @@
 # Manifest Format & Core Keys
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
-`manifest.json` is a JSON document (UTF-8) at the extension's root declaring metadata and capabilities. Comments are not permitted in a production manifest, and `manifest_version` must be `3`.
+`manifest.json` is a JSON document (UTF-8) at the extension's root declaring metadata and capabilities. Use strict JSON for portable tooling; the examples show individual fields to merge into a complete MV3 manifest with name, version and manifest_version.
 
 ## `manifest_version`
 Required integer; only `3` is accepted (the Chrome Web Store no longer accepts MV2).

@@ -1,11 +1,11 @@
 # Navigation, History, Sessions & Search
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 These APIs observe navigation, read/edit history, bookmarks, and the reading list, surface top sites and closed sessions, inspect processes (dev only), and run default-provider searches. All are Promise-based in MV3.
 
-## chrome.webNavigation
+## [chrome.webNavigation](https://developer.chrome.com/docs/extensions/reference/api/webNavigation)
 - **Permission:** `"webNavigation"` (no host permissions required).
 - **Key methods** (Promises, Chrome 93+): `getFrame(details)` where `details` is `{ tabId?, frameId?, documentId?, processId? }`; `getAllFrames(details)` where `details` is `{ tabId }`.
 - **Key events** (success order): `onBeforeNavigate` → `onCommitted` → `onDOMContentLoaded` → `onCompleted`; failures fire `onErrorOccurred`. Also `onCreatedNavigationTarget`, `onReferenceFragmentUpdated`, `onHistoryStateUpdated`, `onTabReplaced`. Detail objects include `tabId`, `frameId`, `parentFrameId`, `url`, `timeStamp`, `processId`, `documentId`, `documentLifecycle`, `frameType`, `parentDocumentId`. `onCommitted` adds `transitionType` and `transitionQualifiers`.
@@ -18,7 +18,7 @@ chrome.webNavigation.onCommitted.addListener(
 );
 ```
 
-## chrome.sessions
+## [chrome.sessions](https://developer.chrome.com/docs/extensions/reference/api/sessions)
 - **Permission:** `"sessions"`.
 - **Key methods** (Promises): `getRecentlyClosed(filter?)`, `getDevices(filter?)`, `restore(sessionId?)` (omit to restore most recent). Constant `MAX_SESSION_RESULTS` = `25`.
 - **Key events:** `onChanged`.
@@ -29,7 +29,7 @@ const closed = await chrome.sessions.getRecentlyClosed({ maxResults: 10 });
 await chrome.sessions.restore();
 ```
 
-## chrome.history
+## [chrome.history](https://developer.chrome.com/docs/extensions/reference/api/history)
 - **Permission:** `"history"`.
 - **Key methods** (Promises): `search(query)` with fields `text`, `startTime?`, `endTime?`, `maxResults?` (default `100`); `getVisits(details)`, `addUrl(details)`, `deleteUrl(details)`, `deleteRange({ startTime, endTime })`, `deleteAll()`.
 - **Key events:** `onVisited`, `onVisitRemoved`.
@@ -41,14 +41,14 @@ const items = await chrome.history.search({
 });
 ```
 
-## chrome.topSites
+## [chrome.topSites](https://developer.chrome.com/docs/extensions/reference/api/topSites)
 - **Permission:** `"topSites"`. **Method:** `get()` resolves to `MostVisitedURL[]` (`title`, `url`).
 
 ```js
 const sites = await chrome.topSites.get();
 ```
 
-## chrome.bookmarks
+## [chrome.bookmarks](https://developer.chrome.com/docs/extensions/reference/api/bookmarks)
 - **Permission:** `"bookmarks"`.
 - **Key methods** (Promises): `create(bookmark)`, `get(idOrIdList)`, `getChildren(id)`, `getRecent(numberOfItems)`, `getTree()`, `getSubTree(id)`, `search(query)`, `move(id, destination)`, `update(id, changes)`, `remove(id)`, `removeTree(id)`.
 - **Key events:** `onCreated`, `onRemoved`, `onChanged`, `onMoved`, `onChildrenReordered`, `onImportBegan`, `onImportEnded`.
@@ -60,7 +60,7 @@ const node = await chrome.bookmarks.create({
 });
 ```
 
-## chrome.readingList
+## [chrome.readingList](https://developer.chrome.com/docs/extensions/reference/api/readingList)
 - **Permission:** `"readingList"`. Chrome 120+.
 - **Key methods** (Promises): `addEntry(entry)` (`url`, `title`, `hasBeenRead`); `query(info)` (`url?`, `title?`, `hasBeenRead?`); `updateEntry(info)`; `removeEntry(info)` (`url`).
 - **Key events:** `onEntryAdded`, `onEntryRemoved`, `onEntryUpdated` (each receives a `ReadingListEntry`).
@@ -70,13 +70,13 @@ const node = await chrome.bookmarks.create({
 await chrome.readingList.addEntry({ url: "https://example.com/", title: "Read me", hasBeenRead: false });
 ```
 
-## chrome.processes
+## [chrome.processes](https://developer.chrome.com/docs/extensions/reference/api/processes)
 - **Permission:** `"processes"`. **Dev channel only** (not stable).
 - **Key methods** (Promises): `getProcessIdForTab(tabId)`, `getProcessInfo(processIds, includeMemory)`, `terminate(processId)`.
 - **Key events:** `onCreated`, `onUnresponsive`, `onUpdated`, `onUpdatedWithMemory`, `onExited`.
 - **Key types:** `Process` (`id`, `osProcessId`, `type`, `cpu`, `network`, `privateMemory`, `jsMemoryAllocated`, `jsMemoryUsed`). `ProcessType`: `"browser"`, `"renderer"`, `"extension"`, `"gpu"`, `"utility"`, `"nacl"`, `"other"`.
 
-## chrome.search
+## [chrome.search](https://developer.chrome.com/docs/extensions/reference/api/search)
 - **Permission:** `"search"`. Chrome 87+. **Method:** `query(queryInfo)` where `queryInfo` is `{ text (required), disposition?, tabId? }`. `Disposition`: `"CURRENT_TAB"`, `"NEW_TAB"`, `"NEW_WINDOW"`.
 
 ```js

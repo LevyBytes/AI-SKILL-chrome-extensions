@@ -1,14 +1,14 @@
 # Scripting & User Scripts
 
-> Manifest V3 reference. Original prose; identifiers preserved verbatim.
+> Manifest V3 API examples are fragments: run awaited calls inside an async handler and supply the shown input variables. Register worker listeners synchronously at startup; each API heading links to its official contract.
 
 ## Overview
 `chrome.scripting` injects JavaScript and CSS into pages at runtime and manages dynamically registered content scripts. `chrome.userScripts` runs user-supplied (arbitrary) code in a dedicated, CSP-exempt execution world with its own messaging. Both replace MV2 patterns such as `chrome.tabs.executeScript`.
 
-## chrome.scripting
+## [chrome.scripting](https://developer.chrome.com/docs/extensions/reference/api/scripting)
 - **Purpose:** inject scripts/styles on demand and register/update/unregister content scripts at runtime, instead of declaring them statically in the manifest.
 - **Permission:** `"scripting"` plus host access via `"host_permissions"` or the `"activeTab"` permission. Example: `"permissions": ["scripting", "activeTab"]`.
-- **Key methods** (all Promise-based; no callback variants):
+- **Key methods** (Promise forms shown; chrome.* also supports callbacks where documented):
   - `executeScript(injection)` → resolves to `InjectionResult[]`
   - `insertCSS(injection)` → resolves when applied
   - `removeCSS(injection)` (Chrome 90+)
@@ -40,7 +40,7 @@ async function highlight(tabId, color) {
 }
 ```
 
-## chrome.userScripts
+## [chrome.userScripts](https://developer.chrome.com/docs/extensions/reference/api/userScripts)
 - **Purpose:** register and run arbitrary user-provided scripts in the User Scripts world, configure that world (CSP, messaging), and (Chrome 135+) execute scripts imperatively.
 - **Permission:** `"userScripts"` plus host permissions (e.g. `"*://example.com/*"`). MV3; minimum Chrome 120. Before Chrome 138 the user must enable Developer Mode; Chrome 138+ exposes an "Allow User Scripts" toggle on the extension's details page.
 - **Key methods** (all Promise-based): `register(scripts)`; `getScripts(filter?)`; `update(scripts)`; `unregister(filter?)`; `configureWorld(properties)`; `getWorldConfigurations()` (Chrome 133+); `resetWorldConfiguration(worldId?)` (Chrome 133+); `execute(injection)` (Chrome 135+).
@@ -54,6 +54,10 @@ async function highlight(tabId, color) {
 - **MV3 notes:** detect availability by calling `getScripts` inside a `try/catch`; it throws when the permission/toggle is off. The `USER_SCRIPT` world is exempt from the page CSP. To message between user scripts and the extension you must first `configureWorld({ messaging: true })`. User scripts are cleared on extension update — re-register from a `runtime.onInstalled` handler (reason `"update"`).
 
 ```js
+chrome.runtime.onUserScriptMessage.addListener((msg, sender) => {
+  console.log("from user script:", msg, sender.url);
+});
+// Run setup from an async install/update handler after registering listeners.
 await chrome.userScripts.configureWorld({ messaging: true });
 await chrome.userScripts.register([{
   id: "greeter",
@@ -62,7 +66,5 @@ await chrome.userScripts.register([{
   runAt: "document_idle",
   world: "USER_SCRIPT",
 }]);
-chrome.runtime.onUserScriptMessage.addListener((msg, sender) => {
-  console.log("from user script:", msg, sender.url);
-});
+
 ```
