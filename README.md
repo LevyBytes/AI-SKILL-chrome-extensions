@@ -25,7 +25,7 @@ flowchart LR
 
 Manifest V3 development references for Chrome-family browser extensions. The package connects manifest declarations, service workers, content scripts and extension APIs so an agent can reason about architecture, permissions and lifecycle behavior while implementing a feature.
 
-Use when building, scaffolding, or debugging Chrome, Chromium, or Edge Manifest V3 browser extensions: service workers, content scripts, popups, options pages, side panels, omnibox, context menus, message passing, permissions, host_permissions, native messaging, loading unpacked extensions, MV2-to-MV3 migration, manifest.json with manifest_version 3, or chrome.* / browser.* APIs such as action, tabs, scripting, storage, runtime, alarms, permissions, declarativeNetRequest, webRequest, identity, sidePanel, commands, cookies, notifications, and devtools. Do not use for Firefox/Safari-specific WebExtension behavior, ordinary web-page automation, or Chrome Web Store listing/review/publishing beyond manifest keys.
+Use when building, scaffolding or debugging Chrome, Chromium or Edge Manifest V3 extensions: service workers, content scripts, popups, options pages, side panels, omnibox, context menus, message passing, permissions and host_permissions, native messaging, unpacked loading, MV2-to-MV3 migration, manifest.json, or chrome.* and browser.* APIs such as action, tabs, scripting, storage, runtime, alarms, declarativeNetRequest, webRequest, identity, sidePanel, commands, cookies, notifications and devtools. Not for Firefox/Safari-specific behavior, ordinary web-page automation or Chrome Web Store listing and review.
 
 ## What this skill helps with
 
@@ -50,4 +50,4 @@ Match the browser, version and platform requirements of the selected API; Chrome
 
 Skill reference documentation is interpreted content for use in open source projects. Check against [official documentation sources](https://developer.chrome.com/docs/extensions) when dealing with defects or issues that may come up from interpreting this skill's references.
 
-Licensed under **AGPL-3.0**; see [LICENSE](LICENSE). Part of the [Agent Kaizen](https://github.com/LevyBytes/agent-kaizen) skill library.
+Licensed under **Apache-2.0**; see [LICENSE](LICENSE). Part of the [Agent Kaizen](https://github.com/LevyBytes/agent-kaizen) skill library.

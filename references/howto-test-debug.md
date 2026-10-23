@@ -8,9 +8,9 @@ Inspecting a running MV3 extension (service worker, popup, content scripts) from
 ## Debugging a loaded extension
 Load the extension unpacked first (see [howto-integrate-distribute.md](howto-integrate-distribute.md)), then debug from `chrome://extensions`.
 
-- **Service worker** — click the blue **Inspect views** link (the service worker entry) to open DevTools; `console.log` output appears there. A red **Errors** button surfaces registration/runtime errors (**Clear all** resets it). Control the worker lifecycle via the **Service Workers** pane under the **Application** panel.
-- **Popup** — right-click the open popup → **Inspect** for its own DevTools.
-- **Content scripts** — errors appear in the host page's console; use the console context dropdown (next to **top**) to select your extension.
+- **Service worker**: click the blue **Inspect views** link (the service worker entry) to open DevTools; `console.log` output appears there. A red **Errors** button surfaces registration/runtime errors (**Clear all** resets it). Control the worker lifecycle via the **Service Workers** pane under the **Application** panel.
+- **Popup**: right-click the open popup → **Inspect** for its own DevTools.
+- **Content scripts**: errors appear in the host page's console; use the console context dropdown (next to **top**) to select your extension.
 
 After any code change, reload the extension; ensure required APIs are declared as permissions.
 

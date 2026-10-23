@@ -51,9 +51,9 @@ window.addEventListener("message", (event) => {
 ```
 
 ## run_at timing
-- `"document_start"` — after CSS is injected, before the DOM is constructed.
-- `"document_end"` — after the DOM is complete, before all subresources have necessarily finished loading.
-- `"document_idle"` — preferred default; Chrome chooses a time between document_end and immediately after window.onload, with the DOM complete.
+- `"document_start"`: after CSS is injected, before the DOM is constructed.
+- `"document_end"`: after the DOM is complete, before all subresources have necessarily finished loading.
+- `"document_idle"`: preferred default; Chrome chooses a time between document_end and immediately after window.onload, with the DOM complete.
 
 ```json
 { "content_scripts": [{ "matches": ["https://*/*"], "js": ["early.js"], "run_at": "document_start" }] }

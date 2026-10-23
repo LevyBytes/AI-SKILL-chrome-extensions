@@ -9,12 +9,12 @@ These APIs manage the browser's tab, tab-group, and window surfaces from a servi
 - **Purpose:** create, query, move, update, group, and message tabs; capture screenshots, detect language, and control zoom.
 - **Permission:** mostly none (creating, reloading, navigating tabs needs no permission). The `"tabs"` permission unlocks the sensitive properties `url`, `pendingUrl`, `title`, `favIconUrl`. `"activeTab"` grants a temporary host grant on user invocation. `captureVisibleTab()` requires `<all_urls>` or an active `activeTab` grant; narrower host access alone is insufficient. URL filtering needs `"tabs"` or matching host permissions.
 - **Key methods** (asynchronous calls return Promises; connect returns a Port):
-  - `query(queryInfo)` — match by `active`, `currentWindow`, `lastFocusedWindow`, `url`, `pinned`, `groupId`, `windowId`, `status`, etc.
-  - `create(createProperties)` — `url`, `active`, `index`, `windowId`, `pinned`, `openerTabId`.
-  - `update(tabId?, updateProperties)` — `url`, `active`, `highlighted`, `pinned`, `muted`, `openerTabId`, `autoDiscardable`.
-  - `sendMessage(tabId, message, options?)` — message that tab's content scripts.
+  - `query(queryInfo)`: match by `active`, `currentWindow`, `lastFocusedWindow`, `url`, `pinned`, `groupId`, `windowId`, `status`, etc.
+  - `create(createProperties)`: `url`, `active`, `index`, `windowId`, `pinned`, `openerTabId`.
+  - `update(tabId?, updateProperties)`: `url`, `active`, `highlighted`, `pinned`, `muted`, `openerTabId`, `autoDiscardable`.
+  - `sendMessage(tabId, message, options?)`: message that tab's content scripts.
   - `get(tabId)`, `getCurrent()` (resolves to `undefined` outside a tab), `remove(tabIds)`, `move(tabIds, moveProperties)`, `duplicate(tabId)`, `reload(tabId?, reloadProperties?)`.
-  - `group(options)`, `ungroup(tabIds)` — grouping lives here, not in `tabGroups`.
+  - `group(options)`, `ungroup(tabIds)`: grouping lives here, not in `tabGroups`.
   - `highlight(highlightInfo)`, `discard(tabId?)`, `goBack(tabId?)`, `goForward(tabId?)`, `detectLanguage(tabId?)`, `captureVisibleTab(windowId?, options?)`, `connect(tabId, connectInfo?)`, `getZoom`/`setZoom`/`getZoomSettings`/`setZoomSettings`.
 - **Key events:** `onCreated`, `onUpdated`, `onActivated`, `onRemoved`, `onMoved`, `onAttached`, `onDetached`, `onHighlighted`, `onReplaced`, `onZoomChange`.
 - **Key types:** `Tab` (`id`, `windowId`, `index`, `url`, `title`, `favIconUrl`, `status`, `active`, `highlighted`, `pinned`, `incognito`, `mutedInfo`, `audible`, `discarded`, `autoDiscardable`, `groupId`, `openerTabId`, `pendingUrl`, `sessionId`, `width`, `height`, `frozen`, `lastAccessed`). `MutedInfo` (`muted`, `reason` = `"user"`/`"capture"`/`"extension"`, `extensionId`). Enums: `TabStatus` = `"unloaded"`/`"loading"`/`"complete"`; `ZoomSettingsMode` = `"automatic"`/`"manual"`/`"disabled"`; `ZoomSettingsScope` = `"per-origin"`/`"per-tab"`.

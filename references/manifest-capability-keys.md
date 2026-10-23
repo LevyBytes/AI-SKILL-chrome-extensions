@@ -35,7 +35,7 @@ Array of static injection entries; `matches` plus at least one of `js`/`css` req
 ```
 
 ## `content_security_policy`
-Object (a string in MV2 — migration context) with `extension_pages` and `sandbox`. `extension_pages` cannot load remote code, use `'unsafe-eval'`, or run inline scripts; the minimum enforced policy is `script-src 'self' 'wasm-unsafe-eval'; object-src 'self';`.
+Object (a string in MV2: migration context) with `extension_pages` and `sandbox`. `extension_pages` cannot load remote code, use `'unsafe-eval'`, or run inline scripts; the minimum enforced policy is `script-src 'self' 'wasm-unsafe-eval'; object-src 'self';`.
 
 ```json
 { "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'self';" } }

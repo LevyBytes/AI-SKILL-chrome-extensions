@@ -15,7 +15,7 @@
   - `detectLanguage(text)` resolves to a detection result (`isReliable`, `languages` — array of `{ language, percentage }`); uses CLD (Compact Language Detector).
 - **Key types:** `LanguageCode` — an ISO language code string (`"en"`, `"fr"`); unknown is `"und"`.
 - **Manifest & catalog:**
-  - `default_locale` — required when the extension includes a `/_locales` directory (e.g. `"default_locale": "en"`).
+  - `default_locale`: required when the extension includes a `/_locales` directory (e.g. `"default_locale": "en"`).
   - `_locales/` layout: one subdirectory per locale, each with a `messages.json` (e.g. `_locales/en/messages.json`).
   - `messages.json` entry: keyed by message name with `message` (string), `description` (optional), and `placeholders` (optional; each has `content` and optional `example`).
 - **Predefined messages:** `@@extension_id`, `@@ui_locale`, `@@bidi_dir` (`"ltr"`/`"rtl"`), `@@bidi_reversed_dir`, `@@bidi_start_edge` (`"left"`/`"right"`), `@@bidi_end_edge`. Reference predefined/named messages in CSS and the manifest with the `__MSG_name__` form (e.g. `__MSG_@@extension_id__`); in JavaScript use `getMessage()`.

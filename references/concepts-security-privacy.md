@@ -10,8 +10,8 @@ Remotely hosted code (RHC) is anything the browser executes that is loaded from 
 
 ## Content Security Policy
 In MV3 `content_security_policy` is an object with two keys:
-- `extension_pages` — governs `chrome-extension://` contexts (HTML pages and the service worker), e.g. `"default-src 'self'"`, or set script-src to include 'self' and 'wasm-unsafe-eval' when WebAssembly is needed.
-- `sandbox` — applies only to sandboxed extension pages (more permissive).
+- `extension_pages` - governs `chrome-extension://` contexts (HTML pages and the service worker), e.g. `"default-src 'self'"`, or set script-src to include 'self' and 'wasm-unsafe-eval' when WebAssembly is needed.
+- `sandbox`: applies only to sandboxed extension pages (more permissive).
 
 ```json
 { "content_security_policy": { "extension_pages": "default-src 'self'" } }

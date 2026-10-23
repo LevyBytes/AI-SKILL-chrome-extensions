@@ -29,7 +29,7 @@ chrome.runtime.onInstalled.addListener((details) => {
 ## Termination and timers
 Chrome terminates the worker when 30 seconds of inactivity elapse, a single request exceeds 5 minutes, or a `fetch()` response takes over 30 seconds. Events and API calls reset these timers (API-call resets since Chrome 110; WebSocket messages Chrome 116+; messages sent through long-lived ports Chrome 114+; merely opening a port no longer resets the timer; offscreen messages Chrome 109+; native messaging Chrome 105+). Some prompting APIs may exceed five minutes in Chrome 116+; active debugger sessions keep workers alive in Chrome 118+. Do not treat the usual timeout rules as unconditional.
 
-## Global state is lost — use chrome.storage
+## Global state is lost - use chrome.storage
 Global variables do not survive shutdown. Persist with `chrome.storage` (recommended), `IndexedDB`, or `CacheStorage`. The Web Storage API is **not** available in extension service workers.
 
 ```js
@@ -68,7 +68,7 @@ chrome.alarms.create("refresh", { periodInMinutes: 1 });
 chrome.alarms.onAlarm.addListener((alarm) => { if (alarm.name === "refresh") {/* work */} });
 ```
 
-## No DOM — use offscreen documents
+## No DOM - use offscreen documents
 Service workers cannot access the DOM. Create a hidden offscreen document with `chrome.offscreen` (permission `"offscreen"`). `createDocument()` takes `url` (a bundled static HTML file), `reasons` (a `Reason` array), and `justification`. One offscreen document per profile may exist; only chrome.runtime is available inside it. Use the serialized creation helper in [Offscreen document lifecycle](offscreen-document-lifecycle.md).
 
 ```js

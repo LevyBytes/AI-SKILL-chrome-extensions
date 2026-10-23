@@ -47,9 +47,9 @@ fetch(`https://www.google-analytics.com/mp/collect?measurement_id=${MEASUREMENT_
 
 ## Distribution and installation
 Distribution is platform-specific. External registry/preferences installation on Windows and macOS uses a Chrome Web Store update URL; Linux also permits self-hosted CRX/update paths. Enterprise policy is a separate route. Loading an unpacked development build does not require publication.
-- **Windows registry** — under `HKEY_LOCAL_MACHINE\Software\Google\Chrome\Extensions` (or `...\Wow6432Node\...` for 64-bit), add a key named with the extension ID and set `"update_url": "https://clients2.google.com/service/update2/crx"`.
-- **Preferences file (macOS/Linux)** — a JSON file named after the extension ID under the browser's `External Extensions` directory, with `"external_update_url"` (Web Store), or `"external_crx"` + `"external_version"` (local file on Linux), and optional `"supported_locales"`.
-- **Enterprise policies** — administrators deploy via policy.
+- **Windows registry**: under `HKEY_LOCAL_MACHINE\Software\Google\Chrome\Extensions` (or `...\Wow6432Node\...` for 64-bit), add a key named with the extension ID and set `"update_url": "https://clients2.google.com/service/update2/crx"`.
+- **Preferences file (macOS/Linux)**: a JSON file named after the extension ID under the browser's `External Extensions` directory, with `"external_update_url"` (Web Store), or `"external_crx"` + `"external_version"` (local file on Linux), and optional `"supported_locales"`.
+- **Enterprise policies**: administrators deploy via policy.
 
 ## Loading an unpacked extension (development)
 1. Open `chrome://extensions`.

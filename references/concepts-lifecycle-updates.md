@@ -7,9 +7,9 @@ How an MV3 extension is installed, started, updated, and uninstalled, and how th
 
 ## Install and startup events
 On install/update, the worker's web `install` event fires, then `chrome.runtime.onInstalled`, then the web `activate` event. `chrome.runtime.onInstalled` fires on first install, on update to a new version, and when Chrome updates. Its `details` object has:
-- `details.reason` — an `OnInstalledReason`: `"install"`, `"update"`, `"chrome_update"`, or `"shared_module_update"`.
-- `details.previousVersion` — present only when `reason` is `"update"`.
-- `details.id` — the imported shared-module extension id; present only for `"shared_module_update"`.
+- `details.reason` - an `OnInstalledReason`: `"install"`, `"update"`, `"chrome_update"`, or `"shared_module_update"`.
+- `details.previousVersion`: present only when `reason` is `"update"`.
+- `details.id`: the imported shared-module extension id; present only for `"shared_module_update"`.
 
 ```js
 chrome.runtime.onInstalled.addListener((details) => {

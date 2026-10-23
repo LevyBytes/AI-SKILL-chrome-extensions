@@ -8,10 +8,10 @@ Choosing among the `chrome.storage` areas, persisting service-worker state, read
 ## The chrome.storage areas
 `chrome.storage` exposes four areas behind one async API; all require the `"storage"` permission.
 
-- **local** — stored locally, cleared on uninstall, persists across sessions, not synced. Exposed to content scripts by default. `QUOTA_BYTES` = 10485760 (10 MB; 5 MB in Chrome 113 and earlier); raise it with `"unlimitedStorage"`.
-- **sync** — syncs across the user's signed-in browsers (stored locally while offline). Quotas: `QUOTA_BYTES` = 102400, `QUOTA_BYTES_PER_ITEM` = 8192, `MAX_ITEMS` = 512, `MAX_WRITE_OPERATIONS_PER_MINUTE` = 120, `MAX_WRITE_OPERATIONS_PER_HOUR` = 1800.
-- **session** — in memory while the extension is loaded; cleared on disable/reload/update and browser restart; not synced. Not exposed to content scripts by default. `QUOTA_BYTES` = 10485760 (10 MB; 1 MB in Chrome 111 and earlier).
-- **managed** — set by enterprise policy; read-only for the extension.
+- **local**: stored locally, cleared on uninstall, persists across sessions, not synced. Exposed to content scripts by default. `QUOTA_BYTES` = 10485760 (10 MB; 5 MB in Chrome 113 and earlier); raise it with `"unlimitedStorage"`.
+- **sync**: syncs across the user's signed-in browsers (stored locally while offline). Quotas: `QUOTA_BYTES` = 102400, `QUOTA_BYTES_PER_ITEM` = 8192, `MAX_ITEMS` = 512, `MAX_WRITE_OPERATIONS_PER_MINUTE` = 120, `MAX_WRITE_OPERATIONS_PER_HOUR` = 1800.
+- **session**: in memory while the extension is loaded; cleared on disable/reload/update and browser restart; not synced. Not exposed to content scripts by default. `QUOTA_BYTES` = 10485760 (10 MB; 1 MB in Chrome 111 and earlier).
+- **managed**: set by enterprise policy; read-only for the extension.
 
 Change content-script exposure with `setAccessLevel()` on the area.
 

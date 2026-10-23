@@ -29,9 +29,9 @@ An extension is a directory built with the same web technologies as web apps (HT
 ```
 
 ## Components and where they run
-- **Service worker (background)** — registered via `background.service_worker`. Handles browser events; has no DOM (combine with an offscreen document for DOM work). See [concepts-service-workers.md](concepts-service-workers.md).
-- **Content scripts** — run JavaScript in a web page's context, in an **isolated world** (their variables are not visible to the page or other extensions), yet share the page's DOM. A content script may call only a limited set of APIs directly: `dom`, `i18n`, `storage`, and parts of `runtime` (`connect`, `sendMessage`, `onMessage`, `onConnect`, `getManifest`, `getURL`, `id`). See [concepts-content-scripts.md](concepts-content-scripts.md).
-- **UI surfaces** — the `action` toolbar icon/popup, the `sidePanel`, and the options page; these are ordinary extension HTML pages with full `chrome.*` access per their permissions.
+- **Service worker (background)**: registered via `background.service_worker`. Handles browser events; has no DOM (combine with an offscreen document for DOM work). See [concepts-service-workers.md](concepts-service-workers.md).
+- **Content scripts**: run JavaScript in a web page's context, in an **isolated world** (their variables are not visible to the page or other extensions), yet share the page's DOM. A content script may call only a limited set of APIs directly: `dom`, `i18n`, `storage`, and parts of `runtime` (`connect`, `sendMessage`, `onMessage`, `onConnect`, `getManifest`, `getURL`, `id`). See [concepts-content-scripts.md](concepts-content-scripts.md).
+- **UI surfaces**: the `action` toolbar icon/popup, the `sidePanel`, and the options page; these are ordinary extension HTML pages with full `chrome.*` access per their permissions.
 
 ## How the pieces communicate
 Because components run in different contexts, they coordinate with message passing — one-time requests (`chrome.runtime.sendMessage`, `chrome.tabs.sendMessage`, `chrome.runtime.onMessage`) and long-lived connections (`chrome.runtime.connect`/`chrome.tabs.connect` opening a `runtime.Port`, accepted by `chrome.runtime.onConnect`). External senders use `chrome.runtime.onMessageExternal`/`onConnectExternal`, gated by the `externally_connectable` manifest key. Full patterns in [concepts-messaging.md](concepts-messaging.md).

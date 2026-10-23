@@ -35,10 +35,10 @@ The `scripting` API calls require the `"scripting"` permission plus host permiss
 
 ## Background page to service worker
 The service worker replaces the MV2 background/event page. Required adjustments:
-- **No DOM or `window`** — move DOM work to an offscreen document via messaging.
+- **No DOM or `window`**: move DOM work to an offscreen document via messaging.
 - **Register listeners synchronously at the top level**, not nested inside callbacks/promises.
-- **No persistent global state** — replace in-memory globals and `localStorage` with `chrome.storage.local`.
-- **Replace timers** — swap `setTimeout`/`setInterval` for `chrome.alarms`.
+- **No persistent global state**: replace in-memory globals and `localStorage` with `chrome.storage.local`.
+- **Replace timers**: swap `setTimeout`/`setInterval` for `chrome.alarms`.
 
 ```js
 // handleActionClick is your application handler; choose one registration pattern.

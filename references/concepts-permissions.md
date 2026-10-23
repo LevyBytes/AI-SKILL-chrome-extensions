@@ -7,10 +7,10 @@ How an MV3 extension requests capabilities and host access through manifest keys
 
 ## Permission manifest keys
 MV3 splits capability into named API permissions and host (origin) access, each with an install-time key and an optional (runtime) counterpart:
-- `permissions` — known permission strings (e.g. `"storage"`, `"contextMenus"`), granted at install time.
-- `optional_permissions` — named permissions granted by the user at runtime.
-- `host_permissions` — match patterns for host access, granted at install time.
-- `optional_host_permissions` — host patterns granted at runtime.
+- `permissions`: known permission strings (e.g. `"storage"`, `"contextMenus"`), granted at install time.
+- `optional_permissions`: named permissions granted by the user at runtime.
+- `host_permissions`: match patterns for host access, granted at install time.
+- `optional_host_permissions`: host patterns granted at runtime.
 
 In MV3 host access lives in its own keys rather than being mixed into `permissions` as in MV2 (migration context).
 
@@ -51,9 +51,9 @@ chrome.action.onClicked.addListener(async (tab) => {
 
 ## Host permission match patterns
 Patterns have the form `scheme://host/path`:
-- **Scheme** — `http`, `https`, `file`, or `*` (the `*` scheme matches only `http`/`https`).
-- **Host** — a literal host (`www.example.com`), a subdomain wildcard (`*.example.com`), or a bare `*`. A wildcard in the host must be first and followed by a `.` or `/`.
-- **Path** — required but ignored for host permissions; may use `*`.
+- **Scheme**: `http`, `https`, `file`, or `*` (the `*` scheme matches only `http`/`https`).
+- **Host**: a literal host (`www.example.com`), a subdomain wildcard (`*.example.com`), or a bare `*`. A wildcard in the host must be first and followed by a `.` or `/`.
+- **Path**: required but ignored for host permissions; may use `*`.
 
 Special cases: the `<all_urls>` token matches any URL with a permitted scheme; `file:///` needs three slashes and a manual user grant; use `http://localhost/*` or `http://127.0.0.1/*` for local; Chrome does not support patterns for top-level domains.
 

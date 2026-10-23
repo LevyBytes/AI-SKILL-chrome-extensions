@@ -1,8 +1,9 @@
 ---
 name: chrome-extensions
-description: "Use when building, scaffolding, or debugging Chrome, Chromium, or Edge Manifest V3 browser extensions: service workers, content scripts, popups, options pages, side panels, omnibox, context menus, message passing, permissions, host_permissions, native messaging, loading unpacked extensions, MV2-to-MV3 migration, manifest.json with manifest_version 3, or chrome.* / browser.* APIs such as action, tabs, scripting, storage, runtime, alarms, permissions, declarativeNetRequest, webRequest, identity, sidePanel, commands, cookies, notifications, and devtools. Do not use for Firefox/Safari-specific WebExtension behavior, ordinary web-page automation, or Chrome Web Store listing/review/publishing beyond manifest keys."
+description: "Use when building, scaffolding or debugging Chrome, Chromium or Edge Manifest V3 extensions: service workers, content scripts, popups, options pages, side panels, omnibox, context menus, message passing, permissions and host_permissions, native messaging, unpacked loading, MV2-to-MV3 migration, manifest.json, or chrome.* and browser.* APIs such as action, tabs, scripting, storage, runtime, alarms, declarativeNetRequest, webRequest, identity, sidePanel, commands, cookies, notifications and devtools. Not for Firefox/Safari-specific behavior, ordinary web-page automation or Chrome Web Store listing and review."
+license: Apache-2.0
 metadata:
-  last-updated: "2026-10-09"
+  last-updated: "2026-10-22"
 ---
 
 # Context Router
