@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Content first noise reduction", "file": "references/adaptive-experiences/content-first-noise-reduction/overview.md", "summary": "Open when keeping essential actions visible while deferring secondary detail.", "keywords": ["content-first-noise-reduction", "Authored guide", "popover", "details", "invoker-commands"]},
+    {"topic": "Form factor adaptation", "file": "references/adaptive-experiences/form-factor-adaptation/overview.md", "summary": "Open when keeping controls reachable near safe areas and soft keyboards.", "keywords": ["form-factor-adaptation", "Authored guide", "container-queries", "safe-area-inset", "text-wrap-balance"]},
+    {"topic": "Guided navigation", "file": "references/adaptive-experiences/guided-navigation.md", "summary": "Open when preserving direction and context when moving through a task.", "keywords": ["guided-navigation", "Authored guide", "view-transitions", "cross-document-view-transitions", "speculation-rules"]},
+    {"topic": "Natural interactions", "file": "references/adaptive-experiences/natural-interactions/overview.md", "summary": "Open when supporting keyboard, pointer and touch alternatives.", "keywords": ["natural-interactions", "Authored guide", "focus-visible", "linear-easing", "scroll-snap"]},
+    {"topic": "Preference aware ui", "file": "references/adaptive-experiences/preference-aware-ui.md", "summary": "Open when responding to explicit language, motion or connection choices.", "keywords": ["preference-aware-ui", "Authored guide", "prefers-color-scheme", "color-scheme", "light-dark"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

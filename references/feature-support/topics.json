@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Source topics", "file": "references/feature-support/source-topics.json", "summary": "Open when searching the source topics for Feature support and fallbacks.", "keywords": ["source", "Feature support and fallbacks"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

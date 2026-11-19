@@ -27,6 +27,7 @@ Choose the Manifest V3 API, concept, manifest key, or implementation task.
 | Storage, State & Cross-Origin Isolation | Open when choosing storage areas, persisting worker state, handling cookies, or configuring cross-origin isolation. | [Storage, State & Cross-Origin Isolation](concepts-storage-state.md) |
 | Extension Lifecycle & Updates | Open when handling installation and updates, rolling out new versions, or setting an uninstall URL. | [Extension Lifecycle & Updates](concepts-lifecycle-updates.md) |
 | Security & Privacy | Open when configuring content security policy, resource exposure, remote-code restrictions, or privacy behavior. | [Security & Privacy](concepts-security-privacy.md) |
+| Live Research Observer | Open when an owner wants exact tab observation with bounded DOM evidence and complete configured GraphQL development exchanges without page control. | [Live Research Observer](live-research-observer.md) |
 | MV2 to MV3 Migration | Open when migrating Manifest V2 extension behavior to Manifest V3. | [MV2 to MV3 Migration](concepts-mv2-to-mv3-migration.md) |
 | Manifest Format & Core Keys | Open when declaring the manifest version, name, version, icons, default locale, or other identity keys. | [Manifest Format & Core Keys](manifest-format-core-keys.md) |
 | Manifest Capability Keys | Open when declaring actions, background workers, content scripts, permissions, CSP, side panels, or OAuth in the manifest. | [Manifest Capability Keys](manifest-capability-keys.md) |
@@ -36,4 +37,5 @@ Choose the Manifest V3 API, concept, manifest key, or implementation task.
 | Web Platform How-Tos | Open when using geolocation, screen capture, WebSockets, WebHID, WebUSB, or origin trials in extension contexts. | [Web Platform How-Tos](howto-web-platform.md) |
 | Integrate & Distribute | Open when integrating OAuth or analytics, packaging or self-hosting an extension, or loading it unpacked. | [Integrate & Distribute](howto-integrate-distribute.md) |
 | Test & Debug | Open when testing or debugging service workers, popups, or content scripts with browser tools and test frameworks. | [Test & Debug](howto-test-debug.md) |
+| Web surfaces | Open when implementing a web UI in an extension popup, panel, options page or content script. | [Web surfaces](web-surfaces.md) |
 | Reference Language Selection | Open when you need a language version of this skill's references other than English. | [Reference Language Selection](languages.md) |

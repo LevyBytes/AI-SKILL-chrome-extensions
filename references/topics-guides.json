@@ -22,6 +22,11 @@
       "summary": "Open when testing or debugging service workers, popups, or content scripts with browser tools and test frameworks.",
       "keywords": ["debug", "inspect", "jest", "puppeteer", "selenium", "service worker"]},
     {
+      "topic": "Live Research Observer",
+      "file": "references/live-research-observer.md",
+      "summary": "Open when an owner wants a model to watch manual browsing through sanitized, append-only evidence from one explicitly started tab without controlling the page.",
+      "keywords": ["model live observer", "webpage observation", "exact tab", "sanitized DOM", "append-only evidence"]},
+    {
       "topic": "Reference Language Selection",
       "file": "references/languages.md",
       "summary": "Open when you need a language version of this skill's references other than English.",

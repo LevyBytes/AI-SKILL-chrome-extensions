@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/adaptive-experiences/authored-topics.json", "summary": "Open when searching the authored topics for Adaptive experiences.", "keywords": ["authored", "Adaptive experiences"]},
+    {"topic": "Published topics", "file": "references/adaptive-experiences/published-topics.json", "summary": "Open when searching the published topics for Adaptive experiences.", "keywords": ["published", "Adaptive experiences"]},
+    {"topic": "Expectations topics", "file": "references/adaptive-experiences/expectations-topics.json", "summary": "Open when searching the expectations topics for Adaptive experiences.", "keywords": ["expectations", "Adaptive experiences"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

@@ -1,0 +1,7 @@
+- The application configures a Content Security Policy (via a `<meta http-equiv="Content-Security-Policy">` tag or HTTP response header) that enforces `require-trusted-types-for 'script'`.
+- The application defines a Trusted Types policy (such as a named sanitization policy or a `default` policy) using `trustedTypes.createPolicy()` with a `createHTML` rule that sanitizes or escapes untrusted HTML.
+- When `window.trustedTypes` is unavailable, the page still renders the untrusted HTML through the same sanitization rules without throwing an error (for example, via a "tinyfill" that defines `window.trustedTypes.createPolicy`, or a conditional fallback that calls the policy rules directly).
+- Assigning a raw string directly to `Element.innerHTML` is blocked by Trusted Types enforcement with a `TypeError` (or automatically sanitized if a `default` policy is registered).
+- Untrusted HTML written to `Element.innerHTML` is converted through the Trusted Types policy's `createHTML()` method and rendered without executable `<script>` elements or inline `on*` event handler attributes in the DOM.
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/security/trusted-types/expectations.md#L1-L5). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

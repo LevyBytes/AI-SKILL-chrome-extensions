@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "C and C++ on the web", "file": "references/webassembly-builds/cpp-on-the-web/index.md", "summary": "Open when compiling native libraries and controlling JavaScript-to-Wasm overhead.", "keywords": ["cpp-on-the-web", "Authored guide", "wasm"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

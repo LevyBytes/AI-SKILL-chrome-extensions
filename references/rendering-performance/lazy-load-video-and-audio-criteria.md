@@ -1,0 +1,8 @@
+- Above-the-fold `<video>` elements located within the initial viewport do not set `loading="lazy"`.
+- Offscreen `<video>` elements located below the fold set `loading="lazy"` to defer media and poster downloads until approaching the viewport.
+- Every `<video >` element sets explicit `width` and `height` attributes and renders with non-zero bounding box dimensions to prevent layout shifts while the video loads (whether lazily or not).
+- Offscreen `<audio>` elements located below the fold set `loading="lazy"` to defer audio downloads until approaching the viewport.
+- Every `<audio loading="lazy">` element includes the `controls` attribute so the player is visibly rendered and can intersect the viewport.
+- Offscreen media elements pair `loading="lazy"` with a fallback strategy (such as `preload="metadata"` or `preload="none"` and an `IntersectionObserver` fallback gated on `HTMLMediaElement.prototype` feature detection) for browsers without native media lazy-loading support.
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/performance/lazy-load-video-and-audio/expectations.md#L1-L6). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

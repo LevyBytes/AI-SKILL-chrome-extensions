@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/browser-security/authored-topics.json", "summary": "Open when searching the authored topics for Browser security and identity.", "keywords": ["authored", "Browser security and identity"]},
+    {"topic": "Published topics", "file": "references/browser-security/published-topics.json", "summary": "Open when searching the published topics for Browser security and identity.", "keywords": ["published", "Browser security and identity"]},
+    {"topic": "Expectations topics", "file": "references/browser-security/expectations-topics.json", "summary": "Open when searching the expectations topics for Browser security and identity.", "keywords": ["expectations", "Browser security and identity"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

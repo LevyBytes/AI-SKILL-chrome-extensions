@@ -1,0 +1,10 @@
+{"schema_version": 1, "owner": ".",
+  "topics": [
+    {"topic": "Offline loading and updates", "file": "references/installed-web-apps/offline-loading-and-updates.md", "summary": "Open when coordinating cached content and service-worker activation.", "keywords": ["offline-loading-and-updates", "Authored guide", "service-workers", "js-modules-service-workers", "online"]},
+    {"topic": "Background sync and transfers", "file": "references/installed-web-apps/background-sync-and-transfers.md", "summary": "Open when retrying queued work when connectivity returns.", "keywords": ["background-sync-and-transfers", "Authored guide", "background-sync", "periodic-background-sync", "background-fetch"]},
+    {"topic": "App badging and notifications", "file": "references/installed-web-apps/app-badging-and-notifications.md", "summary": "Open when synchronizing unread state with browser notifications.", "keywords": ["app-badging-and-notifications", "Authored guide", "badging", "notifications-apps", "push"]},
+    {"topic": "Os content sharing", "file": "references/installed-web-apps/os-content-sharing.md", "summary": "Open when receiving or sending user-selected files through a share sheet.", "keywords": ["os-content-sharing", "Authored guide", "share", "app-share-targets"]},
+    {"topic": "Os launch and file handling", "file": "references/installed-web-apps/os-launch-and-file-handling.md", "summary": "Open when handling a document opened by the operating system.", "keywords": ["os-launch-and-file-handling", "Authored guide", "app-file-handlers", "app-launch-handler", "app-protocol-handlers"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

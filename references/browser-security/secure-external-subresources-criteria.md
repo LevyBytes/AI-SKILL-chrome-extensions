@@ -1,0 +1,8 @@
+- External HTML subresource elements (`<script>` or `<link rel="stylesheet">`) include a cryptographic `integrity` attribute (`sha384-`, `sha512-`, or `sha256-`), a `crossorigin` attribute (`"anonymous"` or `"use-credentials"`), and a `referrerpolicy` attribute.
+- The document configures a baseline referrer policy via a `<meta name="referrer">` element or `Referrer-Policy` HTTP response header so cross-origin subresource requests do not leak full referrer URLs.
+- CSS subresource rules (such as `background-image`, `content`, or `@font-face` `src`) use a quoted URL string inside `url("...")` paired with unquoted `cross-origin()` and `referrer-policy()` keyword modifiers and a quoted `integrity("...")` cryptographic digest modifier (`sha384-`, `sha512-`, or `sha256-`).
+- Stylesheets provide a preceding fallback declaration before the modifier-equipped `url("..." cross-origin(...) referrer-policy(...) integrity("..."))` declaration rather than placing an unverified `url()` inside the same comma-separated `@font-face` `src` list.
+- Subresources whose content matches their declared Subresource Integrity digest load and apply in the page.
+- When a subresource response does not match its declared Subresource Integrity digest, the browser blocks it from executing or applying.
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/security/secure-external-subresources/expectations.md#L1-L6). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

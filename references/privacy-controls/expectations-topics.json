@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Privacy", "file": "references/privacy-controls/privacy-criteria.md", "summary": "Open when limiting permissions, identity exposure and embedded storage.", "keywords": ["privacy", "Behavior criteria", "permissions-policy", "partitioned-cookies", "fedcm"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

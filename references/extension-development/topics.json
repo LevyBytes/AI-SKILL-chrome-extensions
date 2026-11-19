@@ -1,0 +1,6 @@
+{"schema_version": 1, "owner": ".",
+  "topics": [
+    {"topic": "Source topics", "file": "references/extension-development/source-topics.json", "summary": "Open when searching the source topics for Chrome extension development.", "keywords": ["source", "Chrome extension development"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

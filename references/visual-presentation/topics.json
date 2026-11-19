@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/visual-presentation/authored-topics.json", "summary": "Open when searching the authored topics for Visual presentation.", "keywords": ["authored", "Visual presentation"]},
+    {"topic": "Published topics", "file": "references/visual-presentation/published-topics.json", "summary": "Open when searching the published topics for Visual presentation.", "keywords": ["published", "Visual presentation"]},
+    {"topic": "Expectations topics", "file": "references/visual-presentation/expectations-topics.json", "summary": "Open when searching the expectations topics for Visual presentation.", "keywords": ["expectations", "Visual presentation"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

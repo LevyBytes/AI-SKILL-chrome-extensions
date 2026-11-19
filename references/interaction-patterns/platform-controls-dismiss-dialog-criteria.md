@@ -1,0 +1,9 @@
+- The modal dialog should be a `<dialog>` element.
+- The `<dialog>` element should have an accessible name using `aria-labelledby`, `aria-label`, or similar.
+- It `<dialog>` element should either have no `closedby` attribute or a `closedby` attribute set to `any`.
+- The `<dialog>` element is imperatively opened with `showModal()` with JavaScript or, if supported, declaratively opened with the `show-modal` invoker command.
+- No fallback mechanism is provided for dismissing with the <kbd>Esc</kbd> key.
+- No fallback mechanism is provided for the mobile back button/gesture.
+- No fallback mechanism is provided for light dismiss when using `closedby=any`.
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/ui-behaviors/platform-controls-dismiss-dialog/expectations.md#L1-L7). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

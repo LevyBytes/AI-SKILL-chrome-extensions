@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 3,
+  "bridgePort": 43116,
+  "displayName": "Live Research Observer",
+  "allowedOrigins": [
+    "https://example.com",
+    "https://second.example"
+  ],
+  "pageKinds": [
+    {
+      "kind": "example-site",
+      "pathPattern": "^/.*$"
+    }
+  ],
+  "safeQueryValuePatterns": {},
+  "safeDataValueAttributes": [
+    "data-action",
+    "data-id",
+    "data-page",
+    "data-type"
+  ],
+  "developmentNetworkCapture": {
+    "enabled": true,
+    "graphqlEndpointPaths": [
+      "/graphql"
+    ],
+    "maximumPendingRequests": 64,
+    "maximumRequestBodyBytes": 16777216,
+    "maximumResponseBodyBytes": 67108864,
+    "maximumSessionBodyBytes": 536870912
+  }
+}

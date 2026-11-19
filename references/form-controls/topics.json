@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/form-controls/authored-topics.json", "summary": "Open when searching the authored topics for Form entry and selection.", "keywords": ["authored", "Form entry and selection"]},
+    {"topic": "Published topics", "file": "references/form-controls/published-topics.json", "summary": "Open when searching the published topics for Form entry and selection.", "keywords": ["published", "Form entry and selection"]},
+    {"topic": "Expectations topics", "file": "references/form-controls/expectations-topics.json", "summary": "Open when searching the expectations topics for Form entry and selection.", "keywords": ["expectations", "Form entry and selection"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

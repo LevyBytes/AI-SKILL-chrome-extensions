@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Accessibility", "file": "references/accessible-interfaces/accessibility/index.md", "summary": "Open when tracing keyboard order and accessible names.", "keywords": ["accessibility", "Authored guide"]},
+    {"topic": "Accessible generated content", "file": "references/accessible-interfaces/accessible-generated-content.md", "summary": "Open when supplying text equivalents for CSS-generated imagery.", "keywords": ["accessible-generated-content", "Authored guide", "content", "alt-text-generated-content"]},
+    {"topic": "Respect os text scale", "file": "references/accessible-interfaces/respect-os-text-scale/overview.md", "summary": "Open when honoring enlarged system text.", "keywords": ["respect-os-text-scale", "Authored guide", "meta-text-scale"]},
+    {"topic": "Accessible error announcement", "file": "references/accessible-interfaces/accessible-error-announcement.md", "summary": "Open when announcing invalid fields after interaction.", "keywords": ["accessible-error-announcement", "Authored guide", "user-pseudos"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

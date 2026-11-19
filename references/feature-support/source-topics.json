@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Accent color", "file": "references/feature-support/accent-color.md", "summary": "Open when bringing native controls into a brand palette.", "keywords": ["accent-color", "Document"]},
+    {"topic": "Anchor positioning", "file": "references/feature-support/anchor-positioning.md", "summary": "Open when keeping a floating element tethered to its invoker.", "keywords": ["anchor-positioning", "Document"]},
+    {"topic": "Arianotify", "file": "references/feature-support/arianotify.md", "summary": "Open when announcing a status update without duplicating speech.", "keywords": ["arianotify", "Document"]},
+    {"topic": "Color scheme", "file": "references/feature-support/color-scheme.md", "summary": "Open when coordinating widget rendering with a document's chosen theme.", "keywords": ["color-scheme", "Document"]},
+    {"topic": "Customizable select", "file": "references/feature-support/customizable-select.md", "summary": "Open when testing a styled picker alongside its native fallback.", "keywords": ["customizable-select", "Document"]},
+    {"topic": "Focusgroup", "file": "references/feature-support/focusgroup.md", "summary": "Open when implementing arrow-key traversal within a composite.", "keywords": ["focusgroup", "Document"]},
+    {"topic": "Image function", "file": "references/feature-support/image-function.md", "summary": "Open when supplying fallback paint for a CSS image.", "keywords": ["image-function", "Document"]},
+    {"topic": "Interest invokers", "file": "references/feature-support/interest-invokers/overview.md", "summary": "Open when handling focus, hover or long-press interest before activation.", "keywords": ["interest-invokers", "Document"]},
+    {"topic": "Light dark image", "file": "references/feature-support/light-dark-image.md", "summary": "Open when choosing theme-specific artwork where image syntax varies.", "keywords": ["light-dark-image", "Document"]},
+    {"topic": "Light dark", "file": "references/feature-support/light-dark.md", "summary": "Open when selecting foreground and background tokens by appearance.", "keywords": ["light-dark", "Document"]},
+    {"topic": "Popover", "file": "references/feature-support/popover.md", "summary": "Open when checking dismissal, invocation and top-layer behavior.", "keywords": ["popover", "Document"]},
+    {"topic": "Scrollbar color", "file": "references/feature-support/scrollbar-color.md", "summary": "Open when adjusting track and thumb colors under forced colors.", "keywords": ["scrollbar-color", "Document"]},
+    {"topic": "Temporal", "file": "references/feature-support/temporal.md", "summary": "Open when choosing a calendar-aware fallback for missing runtime APIs.", "keywords": ["temporal", "Document"]},
+    {"topic": "Tmp cross origin storage", "file": "references/feature-support/tmp-cross-origin-storage.md", "summary": "Open when selecting a sharing scope for integrity-checked public assets.", "keywords": ["tmp-cross-origin-storage", "Document"]},
+    {"topic": "Tmp customizable select listbox", "file": "references/feature-support/tmp-customizable-select-listbox.md", "summary": "Open when detecting support for styled multi-option lists.", "keywords": ["tmp-customizable-select-listbox", "Document"]},
+    {"topic": "Transition behavior", "file": "references/feature-support/transition-behavior.md", "summary": "Open when allowing a discrete property to change during an animation.", "keywords": ["transition-behavior", "Document"]},
+    {"topic": "User pseudos", "file": "references/feature-support/user-pseudos/index.md", "summary": "Open when synchronizing visual validation and accessible field state.", "keywords": ["user-pseudos", "Document"]},
+    {"topic": "Origin trials", "file": "references/feature-support/origin-trials.md", "summary": "Open when looking up the relevant Chromium feature trial.", "keywords": ["origin-trials", "Document"]},
+    {"topic": "Pending web features", "file": "references/feature-support/pending-web-features.md", "summary": "Open when resolving provisional IDs to browser compatibility records.", "keywords": ["pending-web-features", "Document"]},
+    {"topic": "Volatile features", "file": "references/feature-support/volatile-features.md", "summary": "Open when identifying recently changed or device-dependent APIs.", "keywords": ["volatile-features", "Document"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

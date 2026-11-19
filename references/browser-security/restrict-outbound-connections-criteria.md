@@ -1,0 +1,7 @@
+- The `Connection-Allowlist` or `Connection-Allowlist-Report-Only` policy is formatted as a single RFC 9651 Inner List `(...)` of space-separated entries where `response-origin` is an unquoted token and external URL patterns are double-quoted strings.
+- URL patterns in `Connection-Allowlist` use `"http://..."` or `"https://..."` schemes (not `ws://`, `wss://`, or relative paths), omit a bare trailing slash on origin-wide patterns (or use an explicit `/*` wildcard) so subpaths are permitted, and avoid custom regular expression groups.
+- Violation reporting is configured with a `Reporting-Endpoints` definition and an unquoted `; report-to=<endpoint-name>` parameter appended after the closing parenthesis of the `Connection-Allowlist` inner list.
+- A paired `Content-Security-Policy` fallback policy is configured alongside `Connection-Allowlist`, including `default-src`, `connect-src`, `form-action`, and `worker-src 'self'`.
+- Outbound `fetch()` requests to `response-origin` or allowlisted endpoints succeed, while requests to unlisted third-party origins are blocked and caught gracefully with visible status feedback instead of throwing unhandled promise rejections.
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/security/restrict-outbound-connections/expectations.md#L1-L5). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

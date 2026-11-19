@@ -1,0 +1,34 @@
+```yaml
+---
+name: custom-list-markers
+description: Create a list with custom markers, including custom icons, steps, or interactive markers such as checkboxes
+draft: stub
+web-feature-ids:
+  - marker
+  - list-style
+  - subgrid
+  - counter-style
+  - symbols-function
+---
+```
+
+# Custom List Markers
+
+## Notes for guide authors
+
+This is meant to function as the first stop for any use case involving a list with custom markers of any sort, including interactive ones.
+
+- `list-style: <string>` for very basic customization
+- `::marker`, but note caveats (limited styling, layout constraints) and switch to `::before` otherwise
+- `--icon-marker` once the icons guide is written (guide ref to `icons`)
+- `.marker` for actual HTML (e.g. checkboxes)
+- subgrid when you have markers with unknown or variable sizes but then you need a content wrapper unless you can guarantee plain text items
+- Note that a content wrapper is not always an option (e.g. Markdown lists) so need to cover other layouts too
+- Cover variations such as marker backgrounds and connected markers, such as those used in steps lists
+
+## Relationship to other guides
+
+- Once this is done, `checkbox-group` can refer to it for layout
+- Once `icons` is done, this can refer to it for icon markers
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/ui-atoms/custom-list-markers/guide.md#L1-L30). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

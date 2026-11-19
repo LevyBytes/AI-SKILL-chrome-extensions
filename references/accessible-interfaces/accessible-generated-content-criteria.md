@@ -1,0 +1,5 @@
+- Stylesheets define `::before` or `::after` pseudo-element rules that use the `content` alternative text syntax (`content: "..." / ""`) to prevent purely decorative generated text or glyphs from being announced by screen readers.
+- Elements styled with `::before` or `::after` generated content rules using `/` alternative text convey their meaningful label, state, or instruction through DOM text or ARIA attributes rather than relying solely on CSS `content`.
+- Every `::before` or `::after` `content` declaration that uses the `/` alternative text syntax either silences non-image decorative text with `/ ""` (never `url(...) / ""`) or specifies a non-empty `<alt>` string that differs from the primary `content` value and does not duplicate the host element's DOM text.
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/accessibility/accessible-generated-content/expectations.md#L1-L3). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

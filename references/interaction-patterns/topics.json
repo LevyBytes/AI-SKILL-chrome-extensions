@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/interaction-patterns/authored-topics.json", "summary": "Open when searching the authored topics for Interaction patterns.", "keywords": ["authored", "Interaction patterns"]},
+    {"topic": "Published topics", "file": "references/interaction-patterns/published-topics.json", "summary": "Open when searching the published topics for Interaction patterns.", "keywords": ["published", "Interaction patterns"]},
+    {"topic": "Expectations topics", "file": "references/interaction-patterns/expectations-topics.json", "summary": "Open when searching the expectations topics for Interaction patterns.", "keywords": ["expectations", "Interaction patterns"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

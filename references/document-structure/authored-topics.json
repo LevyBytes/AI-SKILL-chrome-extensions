@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "HTML", "file": "references/document-structure/html/index.md", "summary": "Open when choosing native elements for actions and document structure.", "keywords": ["html", "Authored guide"]},
+    {"topic": "Web components", "file": "references/document-structure/web-components.md", "summary": "Open when choosing the native element or component boundary.", "keywords": ["web-components", "Authored guide", "autonomous-custom-elements", "shadow-dom", "declarative-shadow-dom"]},
+    {"topic": "Custom elements", "file": "references/document-structure/custom-elements/overview.md", "summary": "Open when coordinating upgrade, connection and cleanup callbacks.", "keywords": ["custom-elements", "Authored guide", "autonomous-custom-elements"]},
+    {"topic": "Shadow dom", "file": "references/document-structure/shadow-dom.md", "summary": "Open when assigning light-DOM children to slots.", "keywords": ["shadow-dom", "Authored guide", "shadow-dom", "slot"]},
+    {"topic": "Styling web components", "file": "references/document-structure/styling-web-components/overview.md", "summary": "Open when exposing theme variables and component parts.", "keywords": ["styling-web-components", "Authored guide", "shadow-parts", "host-context", "cascade-layers"]},
+    {"topic": "Accessible web components", "file": "references/document-structure/accessible-web-components.md", "summary": "Open when propagating focus and accessible names across a shadow root.", "keywords": ["accessible-web-components", "Authored guide", "aria-attribute-reflection", "shadow-dom"]},
+    {"topic": "Form associated custom elements", "file": "references/document-structure/form-associated-custom-elements.md", "summary": "Open when participating in reset, validation and form submission.", "keywords": ["form-associated-custom-elements", "Authored guide", "form-associated-custom-elements"]},
+    {"topic": "Prerendering custom elements", "file": "references/document-structure/prerendering-custom-elements.md", "summary": "Open when reusing a declarative shadow root after script loads.", "keywords": ["prerendering-custom-elements", "Authored guide", "declarative-shadow-dom"]},
+    {"topic": "Html markers", "file": "references/document-structure/html-markers.md", "summary": "Open when identifying server-rendered ranges during hydration.", "keywords": ["html-markers", "Authored guide", "html-processing-instructions"]},
+    {"topic": "Camera and microphone capture", "file": "references/document-structure/camera-and-microphone-capture.md", "summary": "Open when requesting media devices and handling denial.", "keywords": ["camera-and-microphone-capture", "Authored guide", "usermedia", "tmp-camera-microphone", "media-capture"]},
+    {"topic": "User location", "file": "references/document-structure/user-location.md", "summary": "Open when obtaining a position or accepting a manual alternative.", "keywords": ["user-location", "Authored guide", "geolocation-element", "geolocation"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

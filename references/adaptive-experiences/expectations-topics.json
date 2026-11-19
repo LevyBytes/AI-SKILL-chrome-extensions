@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Content first noise reduction", "file": "references/adaptive-experiences/content-first-noise-reduction-criteria.md", "summary": "Open when keeping essential actions visible while deferring secondary detail.", "keywords": ["content-first-noise-reduction", "Behavior criteria", "popover", "details", "invoker-commands"]},
+    {"topic": "Form factor adaptation", "file": "references/adaptive-experiences/form-factor-adaptation-criteria.md", "summary": "Open when keeping controls reachable near safe areas and soft keyboards.", "keywords": ["form-factor-adaptation", "Behavior criteria", "container-queries", "safe-area-inset", "text-wrap-balance"]},
+    {"topic": "Natural interactions", "file": "references/adaptive-experiences/natural-interactions-criteria.md", "summary": "Open when supporting keyboard, pointer and touch alternatives.", "keywords": ["natural-interactions", "Behavior criteria", "focus-visible", "linear-easing", "scroll-snap"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

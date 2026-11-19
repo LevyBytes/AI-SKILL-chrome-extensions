@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/web-tools/authored-topics.json", "summary": "Open when searching the authored topics for WebMCP tools.", "keywords": ["authored", "WebMCP tools"]},
+    {"topic": "Published topics", "file": "references/web-tools/published-topics.json", "summary": "Open when searching the published topics for WebMCP tools.", "keywords": ["published", "WebMCP tools"]},
+    {"topic": "Expectations topics", "file": "references/web-tools/expectations-topics.json", "summary": "Open when searching the expectations topics for WebMCP tools.", "keywords": ["expectations", "WebMCP tools"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

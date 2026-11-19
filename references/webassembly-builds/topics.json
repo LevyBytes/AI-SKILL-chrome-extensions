@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/webassembly-builds/authored-topics.json", "summary": "Open when searching the authored topics for WebAssembly builds.", "keywords": ["authored", "WebAssembly builds"]},
+    {"topic": "Published topics", "file": "references/webassembly-builds/published-topics.json", "summary": "Open when searching the published topics for WebAssembly builds.", "keywords": ["published", "WebAssembly builds"]},
+    {"topic": "Expectations topics", "file": "references/webassembly-builds/expectations-topics.json", "summary": "Open when searching the expectations topics for WebAssembly builds.", "keywords": ["expectations", "WebAssembly builds"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

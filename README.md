@@ -25,7 +25,7 @@ flowchart LR
 
 Manifest V3 development references for Chrome-family browser extensions. The package connects manifest declarations, service workers, content scripts and extension APIs so an agent can reason about architecture, permissions and lifecycle behavior while implementing a feature.
 
-Use when building, scaffolding or debugging Chrome, Chromium or Edge Manifest V3 extensions: service workers, content scripts, popups, options pages, side panels, omnibox, context menus, message passing, permissions and host_permissions, native messaging, unpacked loading, MV2-to-MV3 migration, manifest.json, or chrome.* and browser.* APIs such as action, tabs, scripting, storage, runtime, alarms, declarativeNetRequest, webRequest, identity, sidePanel, commands, cookies, notifications and devtools. Not for Firefox/Safari-specific behavior, ordinary web-page automation or Chrome Web Store listing and review.
+Use when building, scaffolding or debugging Chrome, Chromium or Edge Manifest V3 extensions: service workers, content scripts, popups, options pages, side panels, omnibox, context menus, message passing, permissions and host_permissions, native messaging, unpacked loading, MV2-to-MV3 migration, manifest.json, chrome.* and browser.* APIs, or owner controlled live research observers that record bounded DOM and configured GraphQL development evidence from one approved webpage tab. Not for Firefox or Safari behavior, ordinary web page automation outside an extension, covert interception, or Chrome Web Store listing and review.
 
 ## What this skill helps with
 
@@ -35,6 +35,7 @@ Use when building, scaffolding or debugging Chrome, Chromium or Edge Manifest V3
 | [Handle background and page work](references/concepts-service-workers.md) | Account for service-worker lifecycle limits and follow the related content-script and state guidance. |
 | [Pass messages across contexts](references/concepts-messaging.md) | Use one-time messages, ports and native-host communication with their documented contracts. |
 | [Check permissions and behavior](references/concepts-permissions.md) | Select permissions and match patterns, then use the testing references to inspect the result. |
+| [Record live research evidence](references/live-research-observer.md) | Generate an owner started exact tab observer that records bounded DOM evidence and complete configured GraphQL development exchanges without controlling the page. |
 
 ## The work behind the references
 

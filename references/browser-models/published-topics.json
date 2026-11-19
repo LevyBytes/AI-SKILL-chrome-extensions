@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Language detection", "file": "references/browser-models/language-detection-published.md", "summary": "Open when identifying the likely language of a short sample.", "keywords": ["language-detection", "Published edition", "languagedetector"]},
+    {"topic": "Language model", "file": "references/browser-models/language-model-published/index.md", "summary": "Open when opening a local prompt session with constrained inputs.", "keywords": ["language-model", "Published edition", "Prompt API", "languagemodel"]},
+    {"topic": "Summarizer", "file": "references/browser-models/summarizer-published/overview.md", "summary": "Open when condensing text using a downloaded device model.", "keywords": ["summarizer", "Published edition", "summarizer"]},
+    {"topic": "Translator", "file": "references/browser-models/translator-published/index.md", "summary": "Open when checking whether a particular language pair works locally.", "keywords": ["translator", "Published edition", "translator"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

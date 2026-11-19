@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "JavaScript", "file": "references/client-data/js-criteria.md", "summary": "Open when coordinating cancellation and transforming client-side data.", "keywords": ["js", "Behavior criteria", "structured-clone", "url", "dom"]},
+    {"topic": "Capture location agnostic data", "file": "references/client-data/capture-location-agnostic-data-criteria.md", "summary": "Open when storing birthdays and other zone-independent values.", "keywords": ["capture-location-agnostic-data", "Behavior criteria", "temporal"]},
+    {"topic": "Coordinate global events", "file": "references/client-data/coordinate-global-events-criteria.md", "summary": "Open when resolving repeated or skipped wall-clock times.", "keywords": ["coordinate-global-events", "Behavior criteria", "temporal"]},
+    {"topic": "Calculate event differentials", "file": "references/client-data/calculate-event-differentials-criteria.md", "summary": "Open when measuring elapsed or calendar time between two events.", "keywords": ["calculate-event-differentials", "Behavior criteria", "temporal", "intl-duration-format"]},
+    {"topic": "Sort high precision timestamps", "file": "references/client-data/sort-high-precision-timestamps-criteria.md", "summary": "Open when ordering submillisecond records without loss of precision.", "keywords": ["sort-high-precision-timestamps", "Behavior criteria", "temporal"]},
+    {"topic": "Support global calendar systems", "file": "references/client-data/support-global-calendar-systems-criteria.md", "summary": "Open when retaining non-ISO calendar meaning across conversions.", "keywords": ["support-global-calendar-systems", "Behavior criteria", "temporal"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

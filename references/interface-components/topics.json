@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/interface-components/authored-topics.json", "summary": "Open when searching the authored topics for Interface components.", "keywords": ["authored", "Interface components"]},
+    {"topic": "Published topics", "file": "references/interface-components/published-topics.json", "summary": "Open when searching the published topics for Interface components.", "keywords": ["published", "Interface components"]},
+    {"topic": "Expectations topics", "file": "references/interface-components/expectations-topics.json", "summary": "Open when searching the expectations topics for Interface components.", "keywords": ["expectations", "Interface components"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

@@ -1,0 +1,5 @@
+- Combined selector and `@`-rule filtering criteria (such as pairing `@media (prefers-color-scheme: dark)` with a root attribute, class, or `:has()` selector) set a CSS custom property on an ancestor element (such as `:root`) rather than duplicating the descendant style rules across both the `@media` block and the selector block.
+- Descendant style rules that depend on the combined criteria are applied inside `@container style(--<prop>: <value>)` (or `@container not style(--<prop>: <value>)`) blocks keyed off that custom property.
+- Stylesheets declare the custom property queried by `@container style(...)` or `@container not style(...)` on an ancestor element of the matched target elements rather than on the target elements themselves.
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/css/selector-atrule-combinations/expectations.md#L1-L3). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

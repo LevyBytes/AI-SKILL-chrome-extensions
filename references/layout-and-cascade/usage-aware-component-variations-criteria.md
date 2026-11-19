@@ -1,0 +1,8 @@
+- The parent containers define semantic context flags using CSS custom properties (e.g., `--surface: featured` vs. the unset default).
+- The component uses `@container style()` queries to adapt its internal visual logic (e.g., button variant, badge visibility) based on these inherited properties.
+- When the surface is `featured`, the component reveals promotional elements (like a badge) and uses a more prominent "filled" button style.
+- When the surface is unset (default), the component hides promotional elements and uses a more subtle "outlined" button style.
+- The component does NOT rely on size queries (`min-width` or `max-width`) for this semantic variation.
+- A progressive-enhancement fallback using selectors with `:where()` is provided so browsers without style query support still get the contextual styling.
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/css/usage-aware-component-variations/expectations.md#L1-L6). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

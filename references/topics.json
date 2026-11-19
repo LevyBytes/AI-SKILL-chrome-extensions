@@ -1,30 +1,11 @@
-{
-  "schema_version": 1,
+{"schema_version": 1,
   "topics": [
-    {
-      "topic": "Browser extension APIs",
-      "file": "references/topics-apis.json",
-      "summary": "Open when selecting a chrome.* API for extension behavior, browser integration, or device capabilities.",
-      "keywords": ["Browser extension APIs"]},
-    {
-      "topic": "Architecture and core concepts",
-      "file": "references/topics-concepts.json",
-      "summary": "Open when designing extension components, lifecycle, messaging, permissions, storage, security, or Manifest V3 migration.",
-      "keywords": ["Architecture and core concepts"]},
-    {
-      "topic": "Manifest declarations",
-      "file": "references/topics-manifest.json",
-      "summary": "Open when declaring manifest identity, capabilities, specialized features, or named permissions.",
-      "keywords": ["Manifest declarations"]},
-    {
-      "topic": "Implementation and testing guides",
-      "file": "references/topics-guides.json",
-      "summary": "Open when implementing extension UI, web-platform integration, packaging, authentication, tests, or debugging.",
-      "keywords": ["Implementation and testing guides"]},
-    {
-      "topic": "Reference Language Selection",
-      "file": "references/languages.md",
-      "summary": "Open when you need a language version of this skill's references other than English.",
-      "keywords": ["reference language", "translated references", "language selection"]}
+    {"topic": "Browser extension APIs", "file": "references/topics-apis.json", "summary": "Open when selecting a chrome.* API for extension behavior, browser integration, or device capabilities.", "keywords": ["Browser extension APIs"]},
+    {"topic": "Architecture and core concepts", "file": "references/topics-concepts.json", "summary": "Open when designing extension components, lifecycle, messaging, permissions, storage, security, or Manifest V3 migration.", "keywords": ["Architecture and core concepts"]},
+    {"topic": "Manifest declarations", "file": "references/topics-manifest.json", "summary": "Open when declaring manifest identity, capabilities, specialized features, or named permissions.", "keywords": ["Manifest declarations"]},
+    {"topic": "Implementation and testing guides", "file": "references/topics-guides.json", "summary": "Open when implementing extension UI, web-platform integration, packaging, authentication, tests, or debugging.", "keywords": ["Implementation and testing guides"]},
+    {"topic": "Live Research Observer", "file": "references/live-research-observer.md", "summary": "Open when an owner wants exact tab observation with bounded DOM evidence and complete configured GraphQL development exchanges without page control.", "keywords": ["live research observer", "GraphQL capture", "response body", "exact tab", "debugger", "bounded DOM", "append-only evidence"]},
+    {"topic": "Web surfaces", "file": "references/web-surfaces.md", "summary": "Open when implementing a web UI in an extension popup, panel, options page or content script.", "keywords": ["web interface", "accessibility", "extension UI"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of this skill's references other than English.", "keywords": ["reference language", "translated references", "language selection"]}
   ]
 }

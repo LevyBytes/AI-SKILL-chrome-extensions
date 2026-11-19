@@ -1,0 +1,11 @@
+# Expectations for Quick Sign-Ins with Immediate UI Mode
+
+- The implementation imports or loads the `webauthn-polyfills` library so `PublicKeyCredential.getClientCapabilities`, `PublicKeyCredential.parseRequestOptionsFromJSON`, and `PublicKeyCredential.prototype.toJSON` are supported.
+- Before invoking `navigator.credentials.get` with `uiMode: 'immediate'`, the client feature-detects support by calling `PublicKeyCredential.getClientCapabilities()` and checking `capabilities.immediateGet`, falling back to the standard sign-in flow when `immediateGet` is not supported.
+- The client invokes `navigator.credentials.get` inside a user-initiated click handler (and does not invoke `uiMode: 'immediate'` automatically on page load) with `uiMode: 'immediate'`, `password: true`, and `publicKey` decoded via `PublicKeyCredential.parseRequestOptionsFromJSON`.
+- The immediate credential request does not pass an `AbortSignal` (`signal`) or a non-empty `allowCredentials` list to `navigator.credentials.get` when `uiMode` is `'immediate'`.
+- When `navigator.credentials.get` resolves with a credential, the client handles both credential types by checking `credential.type`: serializing a `'public-key'` credential with `.toJSON()` for the WebAuthn verification endpoint, or sending a `'password'` credential's `id` and `password` to the password verification endpoint.
+- If the WebAuthn verification endpoint returns an HTTP `404` status for an unknown credential, the client invokes `PublicKeyCredential.signalUnknownCredential` (when available) with `rpId` and the Base64URL-encoded credential ID.
+- When `navigator.credentials.get` rejects with `NotAllowedError` (or when `immediateGet` is unsupported), the client catches the error and transitions to a fallback sign-in experience (such as revealing a fallback sign-in form/modal or navigating to the sign-in page).
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/security/quick-sign-ins/expectations.md#L1-L9). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

@@ -1,9 +1,9 @@
 ---
 name: chrome-extensions
-description: "Use when building, scaffolding or debugging Chrome, Chromium or Edge Manifest V3 extensions: service workers, content scripts, popups, options pages, side panels, omnibox, context menus, message passing, permissions and host_permissions, native messaging, unpacked loading, MV2-to-MV3 migration, manifest.json, or chrome.* and browser.* APIs such as action, tabs, scripting, storage, runtime, alarms, declarativeNetRequest, webRequest, identity, sidePanel, commands, cookies, notifications and devtools. Not for Firefox/Safari-specific behavior, ordinary web-page automation or Chrome Web Store listing and review."
+description: "Use when building, scaffolding or debugging Chrome, Chromium or Edge Manifest V3 extensions: service workers, content scripts, popups, options pages, side panels, omnibox, context menus, message passing, permissions and host_permissions, native messaging, unpacked loading, MV2-to-MV3 migration, manifest.json, chrome.* and browser.* APIs, or owner controlled live research observers that record bounded DOM and configured GraphQL development evidence from one approved webpage tab. Not for Firefox or Safari behavior, ordinary web page automation outside an extension, covert interception, or Chrome Web Store listing and review."
 license: Apache-2.0
 metadata:
-  last-updated: "2026-10-22"
+  last-updated: "2026-11-18"
 ---
 
 # Context Router
@@ -35,6 +35,7 @@ Choose the API, concept, manifest key or implementation reference. Check its exe
 | Storage, State & Cross-Origin Isolation | Open when choosing storage areas, persisting worker state, handling cookies, or configuring cross-origin isolation. | [Storage, State & Cross-Origin Isolation](references/concepts-storage-state.md) |
 | Extension Lifecycle & Updates | Open when handling installation and updates, rolling out new versions, or setting an uninstall URL. | [Extension Lifecycle & Updates](references/concepts-lifecycle-updates.md) |
 | Security & Privacy | Open when configuring content security policy, resource exposure, remote-code restrictions, or privacy behavior. | [Security & Privacy](references/concepts-security-privacy.md) |
+| Live Research Observer | Open when an owner wants explicit exact tab observation with bounded DOM evidence and complete configured GraphQL development exchanges without page control. | [Live Research Observer](references/live-research-observer.md) |
 | MV2 to MV3 Migration | Open when migrating Manifest V2 extension behavior to Manifest V3. | [MV2 to MV3 Migration](references/concepts-mv2-to-mv3-migration.md) |
 | Manifest Format & Core Keys | Open when declaring the manifest version, name, version, icons, default locale, or other identity keys. | [Manifest Format & Core Keys](references/manifest-format-core-keys.md) |
 | Manifest Capability Keys | Open when declaring actions, background workers, content scripts, permissions, CSP, side panels, or OAuth in the manifest. | [Manifest Capability Keys](references/manifest-capability-keys.md) |
@@ -46,6 +47,8 @@ Choose the API, concept, manifest key or implementation reference. Check its exe
 | Test & Debug | Open when testing or debugging service workers, popups, or content scripts with browser tools and test frameworks. | [Test & Debug](references/howto-test-debug.md) |
 
 Open the [reference index](references/INDEX.md) or [topic catalogs](references/topics.json) for broader lookup.
+
+Open when implementing a web UI in an extension popup, panel, options page or content script. [Web surfaces](references/web-surfaces.md).
 
 # Language Translations
 

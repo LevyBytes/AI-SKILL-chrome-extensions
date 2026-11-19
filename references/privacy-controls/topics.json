@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/privacy-controls/authored-topics.json", "summary": "Open when searching the authored topics for Browser privacy.", "keywords": ["authored", "Browser privacy"]},
+    {"topic": "Published topics", "file": "references/privacy-controls/published-topics.json", "summary": "Open when searching the published topics for Browser privacy.", "keywords": ["published", "Browser privacy"]},
+    {"topic": "Expectations topics", "file": "references/privacy-controls/expectations-topics.json", "summary": "Open when searching the expectations topics for Browser privacy.", "keywords": ["expectations", "Browser privacy"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

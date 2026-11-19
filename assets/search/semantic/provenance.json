@@ -1,0 +1,51 @@
+{
+  "origin": "GoogleChrome Modern Web Guidance",
+  "use": "Captured guide-level prior. guide-ids.json retains the id of each original chunk row, in order.",
+  "inputs": [
+    {
+      "file": "modern-web-guidance/gen/query-words.json",
+      "sha256": "14ddb88bf337a4726a62a13788241d84d656e798a7188b3cc655b1328c863966",
+      "npm_archive_members": [
+        "https://registry.npmjs.org/modern-web-guidance/-/modern-web-guidance-1.0.0.tgz#package/skills/modern-web-guidance/gen/query-words.json",
+        "https://registry.npmjs.org/modern-web-guidance/-/modern-web-guidance-1.0.1.tgz#package/skills/modern-web-guidance/gen/query-words.json"
+      ]
+    },
+    {
+      "file": "modern-web-guidance/gen/query-words.i8",
+      "sha256": "6c88bceb3b737ec4fdbaa7b1a1a9034f5cd46895c0d2f36aff5c7639d14be82b",
+      "npm_archive_members": [
+        "https://registry.npmjs.org/modern-web-guidance/-/modern-web-guidance-1.0.0.tgz#package/skills/modern-web-guidance/gen/query-words.i8",
+        "https://registry.npmjs.org/modern-web-guidance/-/modern-web-guidance-1.0.1.tgz#package/skills/modern-web-guidance/gen/query-words.i8"
+      ]
+    },
+    {
+      "file": "modern-web-guidance/gen/query-words.scale.f32",
+      "sha256": "4067f3b83a2ae21ffa3df21db1b159b2c04f6058ab394a4e2647d81faf28deea",
+      "npm_archive_members": [
+        "https://registry.npmjs.org/modern-web-guidance/-/modern-web-guidance-1.0.0.tgz#package/skills/modern-web-guidance/gen/query-words.scale.f32",
+        "https://registry.npmjs.org/modern-web-guidance/-/modern-web-guidance-1.0.1.tgz#package/skills/modern-web-guidance/gen/query-words.scale.f32"
+      ]
+    },
+    {
+      "file": "modern-web-guidance/gen/guide-chunks.i8",
+      "sha256": "762246ed36f50de9c1977016f231faf954760593b8c8305842436033a3ee1b1f",
+      "npm_archive_members": [
+        "https://registry.npmjs.org/modern-web-guidance/-/modern-web-guidance-1.0.1.tgz#package/skills/modern-web-guidance/gen/guide-chunks.i8"
+      ]
+    },
+    {
+      "file": "modern-web-guidance/gen/guide-chunks.scale.f32",
+      "sha256": "b34a5aedbad1eee74a9453a8c9a3db03917bd8b07b254d04d213b78e33700c51",
+      "npm_archive_members": [
+        "https://registry.npmjs.org/modern-web-guidance/-/modern-web-guidance-1.0.1.tgz#package/skills/modern-web-guidance/gen/guide-chunks.scale.f32"
+      ]
+    },
+    {
+      "file": "modern-web-guidance/gen/guide-chunks.json.gz",
+      "sha256": "100fe6c1bde649895f2a358b79f4d5b3d22d196db5f332c5fda17887ee4cc1aa",
+      "npm_archive_members": [
+        "https://registry.npmjs.org/modern-web-guidance/-/modern-web-guidance-1.0.1.tgz#package/skills/modern-web-guidance/gen/guide-chunks.json.gz"
+      ]
+    }
+  ]
+}

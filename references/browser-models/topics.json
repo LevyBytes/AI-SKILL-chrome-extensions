@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/browser-models/authored-topics.json", "summary": "Open when searching the authored topics for Built-in model APIs.", "keywords": ["authored", "Built-in model APIs"]},
+    {"topic": "Published topics", "file": "references/browser-models/published-topics.json", "summary": "Open when searching the published topics for Built-in model APIs.", "keywords": ["published", "Built-in model APIs"]},
+    {"topic": "Expectations topics", "file": "references/browser-models/expectations-topics.json", "summary": "Open when searching the expectations topics for Built-in model APIs.", "keywords": ["expectations", "Built-in model APIs"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

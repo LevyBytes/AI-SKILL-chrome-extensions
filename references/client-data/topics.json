@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/client-data/authored-topics.json", "summary": "Open when searching the authored topics for JavaScript and time.", "keywords": ["authored", "JavaScript and time"]},
+    {"topic": "Published topics", "file": "references/client-data/published-topics.json", "summary": "Open when searching the published topics for JavaScript and time.", "keywords": ["published", "JavaScript and time"]},
+    {"topic": "Expectations topics", "file": "references/client-data/expectations-topics.json", "summary": "Open when searching the expectations topics for JavaScript and time.", "keywords": ["expectations", "JavaScript and time"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

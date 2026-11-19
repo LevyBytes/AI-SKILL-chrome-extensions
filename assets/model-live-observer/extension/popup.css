@@ -1,0 +1,117 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  background: #09131d;
+  color: #e6edf3;
+}
+
+body {
+  margin: 0;
+  min-width: 360px;
+}
+
+main {
+  padding: 16px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  color: #7ee7ff;
+  font-size: 18px;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.summary,
+.boundary {
+  color: #9fb3c8;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.warning {
+  margin: 10px 0;
+  padding: 9px;
+  border: 1px solid #8a6b2f;
+  border-radius: 6px;
+  background: #2b2412;
+  color: #ffd580;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.connection,
+.status-card {
+  margin: 12px 0;
+  padding: 12px;
+  border: 1px solid #24445f;
+  border-radius: 8px;
+  background: #0e2030;
+}
+
+.connection {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.connection h2 {
+  grid-column: 1 / -1;
+}
+
+label,
+.label {
+  color: #a8c7df;
+  font-size: 12px;
+}
+
+input {
+  min-width: 0;
+  padding: 7px;
+  border: 1px solid #315a78;
+  border-radius: 5px;
+  background: #08131d;
+  color: #ffffff;
+}
+
+.status-card div {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.message {
+  min-height: 32px;
+  color: #ffd580;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.button-grid {
+  display: grid;
+  gap: 8px;
+}
+
+button {
+  padding: 9px 12px;
+  border: 1px solid #2d6f91;
+  border-radius: 6px;
+  background: #134b68;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+#stop {
+  border-color: #8a3f46;
+  background: #672b32;
+}

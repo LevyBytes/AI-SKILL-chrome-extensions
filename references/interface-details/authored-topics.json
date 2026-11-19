@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Responsive table", "file": "references/interface-details/responsive-table/overview.md", "summary": "Open when retaining header associations at narrow widths.", "keywords": ["responsive-table", "Authored guide", "sticky-positioning", "container-queries"]},
+    {"topic": "Viewport aware dropdowns", "file": "references/interface-details/viewport-aware-dropdowns.md", "summary": "Open when keeping an anchored option panel onscreen.", "keywords": ["viewport-aware-dropdowns", "Authored guide", "anchor-positioning", "popover"]},
+    {"topic": "Position aware tooltips", "file": "references/interface-details/position-aware-tooltips/overview.md", "summary": "Open when orienting an arrow after a popup flips.", "keywords": ["position-aware-tooltips", "Authored guide", "container-anchor-position-queries", "popover"]},
+    {"topic": "Scroll position aware elements", "file": "references/interface-details/scroll-position-aware-elements/overview.md", "summary": "Open when styling descendants when their container is stuck or snapped.", "keywords": ["scroll-position-aware-elements", "Authored guide", "container-scroll-state-queries"]},
+    {"topic": "State aware sticky headers", "file": "references/interface-details/state-aware-sticky-headers/overview.md", "summary": "Open when changing a header only when it is stuck.", "keywords": ["state-aware-sticky-headers", "Authored guide", "container-scroll-state-queries"]},
+    {"topic": "Shrinking header on scroll", "file": "references/interface-details/shrinking-header-on-scroll/overview.md", "summary": "Open when reducing header size without moving the content.", "keywords": ["shrinking-header-on-scroll", "Authored guide", "scroll-driven-animations"]},
+    {"topic": "Scroll progress indicator", "file": "references/interface-details/scroll-progress-indicator/overview.md", "summary": "Open when binding a reading indicator to the intended scroller.", "keywords": ["scroll-progress-indicator", "Authored guide", "scroll-driven-animations"]},
+    {"topic": "Scrollability affordance hints", "file": "references/interface-details/scrollability-affordance-hints/index.md", "summary": "Open when showing whether content continues beyond an edge.", "keywords": ["scrollability-affordance-hints", "Authored guide", "container-scroll-state-queries", "scroll-driven-animations"]},
+    {"topic": "Pull to reveal", "file": "references/interface-details/pull-to-reveal.md", "summary": "Open when keeping a secondary header reachable above an initial scroll target.", "keywords": ["pull-to-reveal", "Authored guide", "scroll-initial-target", "scroll-snap"]},
+    {"topic": "Carousel slide effects", "file": "references/interface-details/carousel-slide-effects/index.md", "summary": "Open when transforming each slide as a snap track scrolls.", "keywords": ["carousel-slide-effects", "Authored guide", "scroll-driven-animations", "scroll-snap"]},
+    {"topic": "Single line overflow", "file": "references/interface-details/single-line-overflow/index.md", "summary": "Open when revealing a truncated label on demand.", "keywords": ["single-line-overflow", "Authored guide", "text-overflow", "container-queries", "scroll-driven-animations"]},
+    {"topic": "Custom list markers", "file": "references/interface-details/custom-list-markers.md", "summary": "Open when styling counters while keeping list semantics.", "keywords": ["custom-list-markers", "Authored guide", "marker", "list-style", "subgrid"]},
+    {"topic": "Component specific light dark theme", "file": "references/interface-details/component-specific-light-dark-theme/overview.md", "summary": "Open when selecting the scheme within a nested surface.", "keywords": ["component-specific-light-dark-theme", "Authored guide", "color-scheme", "light-dark"]},
+    {"topic": "Icons", "file": "references/interface-details/icons/index.md", "summary": "Open when choosing SVG or a mask for a scalable symbol.", "keywords": ["icons", "Authored guide", "svg", "masks", "image-set"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

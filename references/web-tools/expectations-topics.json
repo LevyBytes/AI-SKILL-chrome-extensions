@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "WebMCP", "file": "references/web-tools/webmcp-criteria.md", "summary": "Open when choosing the browser's declarative or imperative tool surface.", "keywords": ["webmcp", "Behavior criteria", "declarative-webmcp", "document-modelcontext"]},
+    {"topic": "Agentic forms", "file": "references/web-tools/agentic-forms-criteria.md", "summary": "Open when exposing an existing form with its normal validation lifecycle.", "keywords": ["agentic-forms", "Behavior criteria", "declarative-webmcp"]},
+    {"topic": "Agentic javascript tools", "file": "references/web-tools/agentic-javascript-tools-criteria.md", "summary": "Open when registering a scoped browser tool with typed inputs.", "keywords": ["agentic-javascript-tools", "Behavior criteria", "document-modelcontext"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

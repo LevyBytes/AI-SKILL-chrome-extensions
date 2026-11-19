@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Passkeys", "file": "references/browser-security/passkeys.md", "summary": "Open when selecting the relying party identity and recovery path.", "keywords": ["passkeys", "Authored guide", "webauthn"]},
+    {"topic": "Passkey registration", "file": "references/browser-security/passkey-registration/index.md", "summary": "Open when registering a new credential and its public key.", "keywords": ["passkey-registration", "Authored guide", "webauthn", "webauthn-signals"]},
+    {"topic": "Passkey authentication", "file": "references/browser-security/passkey-authentication/index.md", "summary": "Open when verifying a credential assertion before sign-in.", "keywords": ["passkey-authentication", "Authored guide", "webauthn", "webauthn-signals"]},
+    {"topic": "Passkey reauthentication", "file": "references/browser-security/passkey-reauthentication/overview.md", "summary": "Open when confirming identity before a sensitive account operation.", "keywords": ["passkey-reauthentication", "Authored guide", "webauthn", "webauthn-signals"]},
+    {"topic": "Passkey conditional create", "file": "references/browser-security/passkey-conditional-create/overview.md", "summary": "Open when offering enrollment after an eligible sign-in.", "keywords": ["passkey-conditional-create", "Authored guide", "webauthn", "webauthn-signals"]},
+    {"topic": "Passkey management", "file": "references/browser-security/passkey-management/index.md", "summary": "Open when renaming and revoking registered credentials.", "keywords": ["passkey-management", "Authored guide", "webauthn", "webauthn-signals"]},
+    {"topic": "Quick sign ins", "file": "references/browser-security/quick-sign-ins/index.md", "summary": "Open when requesting immediately available credentials.", "keywords": ["quick-sign-ins", "Authored guide", "webauthn", "password-credentials", "credential-management"]},
+    {"topic": "Verify email ownership", "file": "references/browser-security/verify-email-ownership/index.md", "summary": "Open when binding an email verification token to a session.", "keywords": ["verify-email-ownership", "Authored guide", "tmp-email-verification"]},
+    {"topic": "Security", "file": "references/browser-security/security/index.md", "summary": "Open when choosing document isolation and content policies.", "keywords": ["security", "Authored guide", "document-isolation-policy"]},
+    {"topic": "Validate origins", "file": "references/browser-security/validate-origins/index.md", "summary": "Open when checking a message sender or redirect destination.", "keywords": ["validate-origins", "Authored guide", "origin"]},
+    {"topic": "Sanitize untrusted html", "file": "references/browser-security/sanitize-untrusted-html/overview.md", "summary": "Open when limiting markup before insertion into the DOM.", "keywords": ["sanitize-untrusted-html", "Authored guide", "sanitizer"]},
+    {"topic": "Trusted types", "file": "references/browser-security/trusted-types/overview.md", "summary": "Open when restricting values accepted by dangerous DOM sinks.", "keywords": ["trusted-types", "Authored guide", "trusted-types"]},
+    {"topic": "Secure external subresources", "file": "references/browser-security/secure-external-subresources/index.md", "summary": "Open when validating remote asset integrity and origin settings.", "keywords": ["secure-external-subresources", "Authored guide", "url-cross-origin", "url-referrer-policy", "url-integrity"]},
+    {"topic": "Restrict outbound connections", "file": "references/browser-security/restrict-outbound-connections/index.md", "summary": "Open when constraining network destinations for documents and workers.", "keywords": ["restrict-outbound-connections", "Authored guide", "connection-allowlists"]},
+    {"topic": "Local network access", "file": "references/browser-security/local-network-access/index.md", "summary": "Open when requesting access to a known device on the local network.", "keywords": ["local-network-access", "Authored guide", "local-network-access"]},
+    {"topic": "Digital signatures", "file": "references/browser-security/digital-signatures/index.md", "summary": "Open when verifying the authenticity of serialized bytes.", "keywords": ["digital-signatures", "Authored guide", "tmp-webcrypto-modern-algos", "web-cryptography"]},
+    {"topic": "Client side encryption", "file": "references/browser-security/client-side-encryption/index.md", "summary": "Open when establishing keys and authenticating encrypted data.", "keywords": ["client-side-encryption", "Authored guide", "tmp-webcrypto-modern-algos", "web-cryptography"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

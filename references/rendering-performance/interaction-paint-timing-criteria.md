@@ -1,0 +1,9 @@
+- The application feature-detects support for `'interaction-contentful-paint'` (and `'soft-navigation'` when tracking soft navigations) via `PerformanceObserver.supportedEntryTypes` before calling `observer.observe()`, degrading gracefully without throwing errors in unsupported browsers.
+- A `PerformanceObserver` is registered with `{ type: 'interaction-contentful-paint', buffered: true }` to observe interaction-triggered contentful paints.
+- When tracking soft navigations, a `PerformanceObserver` is registered with `{ type: 'soft-navigation', buffered: true }` rather than relying on `performance.getEntriesByType('soft-navigation')`.
+- When a `'soft-navigation'` entry is observed, its initial Largest Contentful Paint (LCP) candidate is retrieved using `softNavEntry.getLargestInteractionContentfulPaint()` so paints that occurred before the URL update are captured.
+- Subsequent `'interaction-contentful-paint'` entries are correlated to a soft navigation by matching `entry.interactionId === softNavEntry.interactionId`, rather than matching by `entry.navigationId`.
+- Interaction and soft-navigation paint durations are calculated relative to the initiating interaction's `startTime` (using `entry.duration` or `entry.presentationTime - entry.startTime`), rather than reporting raw `presentationTime` or `paintTime` timestamps measured from the initial hard page load.
+- Details about the painted element (such as `element` or `size`) are read from the nested `entry.largestContentfulPaint` property on `InteractionContentfulPaint` entries.
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/performance/interaction-paint-timing/expectations.md#L1-L7). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

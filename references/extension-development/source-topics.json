@@ -1,0 +1,24 @@
+{"schema_version": 1, "owner": ".",
+  "topics": [
+    {"topic": "Icons", "file": "references/extension-development/icons/overview.md", "summary": "Open when checking artwork dimensions and packaged manifest paths.", "keywords": ["icons", "Document"]},
+    {"topic": "Prompt api", "file": "references/extension-development/prompt-api/overview.md", "summary": "Open when checking whether a packaged extension view can open a local model session.", "keywords": ["prompt-api", "Document"]},
+    {"topic": "Api calling", "file": "references/extension-development/api-calling.md", "summary": "Open when requesting data from an authorized service origin.", "keywords": ["api-calling", "Document"]},
+    {"topic": "Auth identity", "file": "references/extension-development/auth-identity/overview.md", "summary": "Open when obtaining OAuth credentials for a browser extension.", "keywords": ["auth-identity", "Document"]},
+    {"topic": "Content scripts", "file": "references/extension-development/content-scripts/overview.md", "summary": "Open when choosing which page, frame and execution world receive a script.", "keywords": ["content-scripts", "Document"]},
+    {"topic": "Context menus", "file": "references/extension-development/context-menus.md", "summary": "Open when handling an extension command from a page selection.", "keywords": ["context-menus", "Document"]},
+    {"topic": "Csp sandbox", "file": "references/extension-development/csp-sandbox/index.md", "summary": "Open when isolating an extension document that handles restricted content.", "keywords": ["csp-sandbox", "Document"]},
+    {"topic": "Declarative net request", "file": "references/extension-development/declarative-net-request/overview.md", "summary": "Open when choosing network rules and controlling their lifetime.", "keywords": ["declarative-net-request", "Document"]},
+    {"topic": "Devtools", "file": "references/extension-development/devtools/overview.md", "summary": "Open when registering an inspection panel for the selected tab.", "keywords": ["devtools", "Document"]},
+    {"topic": "Media capture", "file": "references/extension-development/media-capture/overview.md", "summary": "Open when consuming a user-approved tab or desktop stream.", "keywords": ["media-capture", "Document"]},
+    {"topic": "Message passing", "file": "references/extension-development/message-passing/overview.md", "summary": "Open when selecting a request, reply or long-lived port.", "keywords": ["message-passing", "Document"]},
+    {"topic": "Omnibox", "file": "references/extension-development/omnibox.md", "summary": "Open when supplying and accepting address-bar suggestions.", "keywords": ["omnibox", "Document"]},
+    {"topic": "Permissions", "file": "references/extension-development/permissions/overview.md", "summary": "Open when choosing a scoped host grant or temporary tab access.", "keywords": ["permissions", "Document"]},
+    {"topic": "Popup ui", "file": "references/extension-development/popup-ui.md", "summary": "Open when retaining state when an action popup closes.", "keywords": ["popup-ui", "Document"]},
+    {"topic": "Service worker", "file": "references/extension-development/service-worker/overview.md", "summary": "Open when recovering after the background event context is evicted.", "keywords": ["service-worker", "Document"]},
+    {"topic": "Side panel", "file": "references/extension-development/side-panel/overview.md", "summary": "Open when keeping a panel associated with the authorized tab.", "keywords": ["side-panel", "Document"]},
+    {"topic": "Storage", "file": "references/extension-development/storage.md", "summary": "Open when choosing the lifetime and scope of extension state.", "keywords": ["storage", "Document"]},
+    {"topic": "Tab management", "file": "references/extension-development/tab-management/overview.md", "summary": "Open when reading tab metadata or grouping windows with appropriate grants.", "keywords": ["tab-management", "Document"]},
+    {"topic": "User scripts", "file": "references/extension-development/user-scripts/index.md", "summary": "Open when handling user-supplied scripts under explicit browser opt-in.", "keywords": ["user-scripts", "Document"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

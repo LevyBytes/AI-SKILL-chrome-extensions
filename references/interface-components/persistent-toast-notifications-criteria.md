@@ -1,0 +1,12 @@
+- Toasts must appear on top of all other page content, including modal dialogs or open menus.
+- By default, toasts must remain present until they are dismissed.
+- Clicking on the DOM content outside of the popover must not dismiss the toast notification.
+- Multiple toasts must be able to be open at the same time without closing or obscuring one another.
+- The toast must correctly remove itself from the Top Layer once dismissed.
+- Toasts must be added consistently to the same container. The container should be marked up with a `role="region"` attribute, and provided with an accessible name using `aria-label`.
+- `ariaNotify()` should be used to announce the toast's text when it is made visible.
+- Every toast notification must have an explicit close `<button>`. This control must be able to receive focus and be operated using a keyboard alone.
+- When a toast is closed, focus must move to the next toast if there is one, or if not, return to the control that most recently had focus before the toast.
+- Toasts must not include controls that are not already present in the current view.
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/ui-components/persistent-toast-notifications/expectations.md#L1-L10). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

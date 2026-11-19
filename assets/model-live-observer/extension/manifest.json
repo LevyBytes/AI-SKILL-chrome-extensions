@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Live Research Observer (Development)",
+  "version": "0.3.1",
+  "description": "Records bounded page and configured GraphQL development evidence from one owner-selected tab to an owner-run loopback bridge.",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "debugger"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_title": "Live Research Observer",
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src http://127.0.0.1:*;"
+  }
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Research Observer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <h1>Live Research Observer</h1>
+    <p class="summary">Records bounded page states and configured GraphQL development evidence from one selected tab to the local bridge.</p>
+    <p class="warning">Sensitive local evidence includes GraphQL queries, variable values, non cookie headers, and response bodies. Other retained headers can contain reusable tokens.</p>
+
+    <p class="boundary">Start connects automatically to the configured local bridge. No username, port, token, or account binding entry is required.</p>
+
+    <section class="status-card" aria-live="polite">
+      <div><span class="label">Session</span><span id="session-status">Loading...</span></div>
+      <div><span class="label">Observed</span><span id="observation-count">0 events</span></div>
+      <div><span class="label">Last event</span><span id="last-event">None</span></div>
+    </section>
+
+    <p id="message" class="message" role="status"></p>
+
+    <div class="button-grid">
+      <button id="start" type="button">Start live research</button>
+      <button id="observe" type="button">Observe now</button>
+      <button id="stop" type="button">Stop</button>
+    </div>
+
+    <p class="boundary">The extension never clicks, scrolls, navigates, or submits. It excludes cookie headers and browser cookie storage, attaches only to this tab, and sends only to the owner run 127.0.0.1 bridge.</p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

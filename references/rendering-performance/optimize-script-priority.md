@@ -1,0 +1,48 @@
+```yaml
+---
+name: optimize-script-priority
+description: Optimize the loading priority of scripts by boosting critical asynchronous scripts and deprioritizing non-essential or late-body scripts to improve sequencing and reduce delays.
+web-feature-ids:
+    - fetch-priority
+---
+```
+
+# Optimize script priority
+
+Browsers assign default priorities to scripts based on where they appear in the document and whether they have attributes like `async` or `defer`. Using `fetchpriority` gives developers explicit control to ensure critical scripts load first, while non-essential scripts stay out of the way.
+
+## How to implement
+
+1. **Identify critical scripts**: Determine which scripts are essential for the page's core functionality or initial user interaction.
+2. **Elevate critical async scripts**: For critical scripts loaded with `async` or `defer`, add the `fetchpriority="high"` attribute to ensure they are prioritized during the discovery phase.
+3. **Deprioritize non-essential scripts**: For scripts that are not needed immediately (e.g., analytics, ads, or below-the-fold widgets), add `fetchpriority="low"` and ensure they have a `async`, `defer`, or `module` attribute to avoid blocking.
+4. **Sequence parser-blocking scripts**: Use `fetchpriority="low"` on parser-blocking scripts at the end of the body to prevent them from contending for bandwidth with more critical resources.
+
+## Example code
+
+```html
+<!-- Elevate the priority of the critical app logic -->
+<script src="/js/app.js" async fetchpriority="high"></script>
+
+<!-- Deprioritize non-essential tracking scripts -->
+<script src="/js/tracker.js" async fetchpriority="low"></script>
+
+<!-- Deprioritize late-body scripts to favor critical images or CSS -->
+<script src="/js/legacy-widgets.js" fetchpriority="low"></script>
+```
+
+## Best Practices
+
+- **MANDATORY**: Only use `fetchpriority="high"` on at most 1-2 critical scripts to avoid network contention and diluting the priority boost.
+- **DO** use `fetchpriority="high"` specifically for `async` scripts that are known to be critical for Interaction to Next Paint (INP).
+- **DO** deprioritize scripts that are not required for the initial user experience using `fetchpriority="low"`.
+- **DO NOT** use `fetchpriority` on every script tag; it should only be used to change the browser's default heuristic when it is known to be sub-optimal.
+- **DO NOT** use the deprecated `importance` attribute. It has been replaced by `fetchpriority`.
+
+## Fallback strategy
+
+{{ BASELINE_STATUS("fetch-priority") }}
+
+The `fetchpriority` attribute is a progressive enhancement. Browsers that do not support it will ignore the attribute and use their internal scheduling logic without error. No explicit feature detection or fallback logic is required for basic usage.
+
+GoogleChrome Modern Web Guidance contributors. [Original document](https://github.com/GoogleChrome/modern-web-guidance-src/blob/e8feb43e0e61c791f905904222492bf2e4e573fe/guides/performance/optimize-script-priority/guide.md#L1-L44). [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Upstream credits Mozilla Contributors, W3C, WHATWG and IETF. Reorganized for this edition.

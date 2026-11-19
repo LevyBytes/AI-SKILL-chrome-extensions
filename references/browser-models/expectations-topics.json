@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Language detection", "file": "references/browser-models/language-detection-criteria.md", "summary": "Open when identifying the likely language of a short sample.", "keywords": ["language-detection", "Behavior criteria", "languagedetector"]},
+    {"topic": "Language model", "file": "references/browser-models/language-model-criteria.md", "summary": "Open when opening a local prompt session with constrained inputs.", "keywords": ["language-model", "Behavior criteria", "Prompt API", "languagemodel"]},
+    {"topic": "Summarizer", "file": "references/browser-models/summarizer-criteria.md", "summary": "Open when condensing text using a downloaded device model.", "keywords": ["summarizer", "Behavior criteria", "summarizer"]},
+    {"topic": "Translator", "file": "references/browser-models/translator-criteria.md", "summary": "Open when checking whether a particular language pair works locally.", "keywords": ["translator", "Behavior criteria", "translator"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

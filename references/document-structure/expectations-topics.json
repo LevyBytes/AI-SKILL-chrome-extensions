@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "HTML", "file": "references/document-structure/html-criteria.md", "summary": "Open when choosing native elements for actions and document structure.", "keywords": ["html", "Behavior criteria"]},
+    {"topic": "Web components", "file": "references/document-structure/web-components-criteria.md", "summary": "Open when choosing the native element or component boundary.", "keywords": ["web-components", "Behavior criteria", "autonomous-custom-elements", "shadow-dom", "declarative-shadow-dom"]},
+    {"topic": "Custom elements", "file": "references/document-structure/custom-elements-criteria.md", "summary": "Open when coordinating upgrade, connection and cleanup callbacks.", "keywords": ["custom-elements", "Behavior criteria", "autonomous-custom-elements"]},
+    {"topic": "Shadow dom", "file": "references/document-structure/shadow-dom-criteria.md", "summary": "Open when assigning light-DOM children to slots.", "keywords": ["shadow-dom", "Behavior criteria", "shadow-dom", "slot"]},
+    {"topic": "Styling web components", "file": "references/document-structure/styling-web-components-criteria.md", "summary": "Open when exposing theme variables and component parts.", "keywords": ["styling-web-components", "Behavior criteria", "shadow-parts", "host-context", "cascade-layers"]},
+    {"topic": "Accessible web components", "file": "references/document-structure/accessible-web-components-criteria.md", "summary": "Open when propagating focus and accessible names across a shadow root.", "keywords": ["accessible-web-components", "Behavior criteria", "aria-attribute-reflection", "shadow-dom"]},
+    {"topic": "Form associated custom elements", "file": "references/document-structure/form-associated-custom-elements-criteria.md", "summary": "Open when participating in reset, validation and form submission.", "keywords": ["form-associated-custom-elements", "Behavior criteria", "form-associated-custom-elements"]},
+    {"topic": "Prerendering custom elements", "file": "references/document-structure/prerendering-custom-elements-criteria.md", "summary": "Open when reusing a declarative shadow root after script loads.", "keywords": ["prerendering-custom-elements", "Behavior criteria", "declarative-shadow-dom"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

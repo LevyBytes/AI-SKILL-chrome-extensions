@@ -1,0 +1,6 @@
+{"schema_version": 1, "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/installed-web-apps/authored-topics.json", "summary": "Open when searching the authored topics for Installed web applications.", "keywords": ["authored", "Installed web applications"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}

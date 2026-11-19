@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "owner": ".",
+  "topics": [
+    {"topic": "Authored topics", "file": "references/accessible-interfaces/authored-topics.json", "summary": "Open when searching the authored topics for Accessible interfaces.", "keywords": ["authored", "Accessible interfaces"]},
+    {"topic": "Published topics", "file": "references/accessible-interfaces/published-topics.json", "summary": "Open when searching the published topics for Accessible interfaces.", "keywords": ["published", "Accessible interfaces"]},
+    {"topic": "Expectations topics", "file": "references/accessible-interfaces/expectations-topics.json", "summary": "Open when searching the expectations topics for Accessible interfaces.", "keywords": ["expectations", "Accessible interfaces"]},
+    {"topic": "Reference Language Selection", "file": "references/languages.md", "summary": "Open when you need a language version of references other than English.", "keywords": ["reference language", "translated references"]}
+  ]
+}
